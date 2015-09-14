@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="6in" height="6in" viewBox="0 0 16 16" style="background-color: Cornsilk">"
+  <defs>
+    <pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
+      <path d="M 1 0 L 0 0 0 1" fill="none" stroke="blue" stroke-width="0.05"/>
+    </pattern>
+    <marker id="arrow"
+            viewBox="0 0 10 10" refX="8.5" refY="5" 
+            markerUnits="strokeWidth"
+            markerWidth="6" markerHeight="4.5"
+            orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <marker id="blackArrow" style="fill: black; stroke: black"
+            viewBox="0 0 10 10" refX="8.5" refY="5" 
+            markerUnits="strokeWidth"
+            markerWidth="4" markerHeight="3"
+            orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <marker id="blueArrow" style="fill: blue; stroke: blue"
+            viewBox="0 0 10 10" refX="8.5" refY="5" 
+            markerUnits="strokeWidth"
+            markerWidth="4" markerHeight="3"
+            orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <marker id="redArrow" style="fill: red; stroke: red"
+            viewBox="0 0 10 10" refX="8.5" refY="5" 
+            markerUnits="strokeWidth"
+            markerWidth="4" markerHeight="3"
+            orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grid)" />
+  <g transform="translate(3, 13) scale(1, -1)">
+    <!-- main axes -->
+    <line x1="-3" y1="0" x2="13" y2="0"
+          stroke="black"
+          stroke-width="0.1" />
+    <line x1="0" y1="-3" x2="0" y2="13"
+          stroke="black"
+          stroke-width="0.1" />
+    <!-- main basis -->
+    <line x1="0" y1="0" x2="1" y2="0"
+          marker-end="url(#blackArrow)"
+          stroke="black"
+          stroke-width="0.1" />
+    <line x1="0" y1="0" x2="0" y2="1"
+          marker-end="url(#blackArrow)"
+          stroke="black"
+          stroke-width="0.1" />
+    <g transform="translate(6, 7) rotate(-90) scale(-2, 2)">
+      <animateTransform id="AtoB" attributeName="transform" additive="sum" type="scale" from="1, 1" to="0.5, 0.5" begin="accessKey(1)" dur="1s" fill="freeze" />
+      <animateTransform id="BtoC" attributeName="transform" additive="sum" type="scale" from="1, 1" to="-1, 1" begin="accessKey(2)" dur="1s" fill="freeze" />
+      <animateTransform id="CtoD" attributeName="transform" additive="sum" type="rotate" from="0" to="90" begin="accessKey(3)" dur="1s" fill="freeze" />
+      <animateTransform id="DtoE" attributeName="transform" additive="sum" type="translate" from="0, 0" to="-6, -7" begin="accessKey(4)" dur="1s" fill="freeze" />
+      <animateTransform id="ResetT" attributeName="transform" type="translate" from="6, 7" to="0, 0" begin="accessKey(r)" dur="0s" fill="freeze" />
+      <animateTransform id="ResetR" attributeName="transform" additive="sum" type="rotate" from="-90" to="0" begin="accessKey(r)" dur="0s" fill="freeze" />
+      <animateTransform id="ResetS" attributeName="transform" additive="sum" type="scale" from="-2, 2" to="1, 1" begin="accessKey(r)" dur="0s" fill="freeze" />
+      <line x1="0" y1="0" x2="1" y2="0"
+            marker-start="url(#org)"
+            marker-end="url(#blueArrow)"
+            stroke="blue"
+            stroke-width="0.1">
+      </line>
+      <line x1="0" y1="0" x2="0" y2="1"
+            marker-start="url(#org)"
+            marker-end="url(#blueArrow)"
+            stroke="blue"
+            stroke-width="0.1">
+      </line>
+    </g>
+    <text x="5" y="-9" transform="scale(1, -1)" font-size="0.8" font-family="Ubuntu Mono" visibility="visible">X
+        <set attributeName="y" to="-8" begin="AtoB.end" dur="0s" fill="freeze" />
+        <set attributeName="y" to="-5" begin="BtoC.end" dur="0s" fill="freeze" />
+        <set attributeName="x" to="6" begin="BtoC.end" dur="0s" fill="freeze" />
+        <set attributeName="x" to="7.5" begin="CtoD.end" dur="0s" fill="freeze" />
+        <set attributeName="y" to="-7" begin="CtoD.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="hidden" begin="DtoE.begin" dur="0s" fill="freeze" />
+        <set attributeName="x" to="5" begin="ResetT.end" dur="0s" fill="freeze" />
+        <set attributeName="y" to="-9" begin="ResetR.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="visible" begin="ResetS.end" dur="0s" fill="freeze" />
+    </text>
+    <text x="8" y="-6" transform="scale(1, -1)" font-size="0.8" font-family="Ubuntu Mono" visibility="visible">Y
+        <set attributeName="x" to="7" begin="AtoB.end" dur="0s" fill="freeze" />
+        <set attributeName="y" to="-7" begin="BtoC.end" dur="0s" fill="freeze" />
+        <set attributeName="x" to="5.5" begin="CtoD.end" dur="0s" fill="freeze" />
+        <set attributeName="y" to="-8" begin="CtoD.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" begin="DtoE.begin" to="hidden" dur="0s" fill="freeze" />
+        <set attributeName="x" to="8" begin="ResetT.end" dur="0s" fill="freeze" />
+        <set attributeName="y" to="-6" begin="ResetR.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="visible" begin="ResetS.end" dur="0s" fill="freeze" />
+    </text>
+    <text x="0.5" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+        <set attributeName="visibility" to="visible" begin="DtoE.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="hidden" begin="ResetT.begin" dur="0s" fill="freeze" />
+        T₋₆,₋₇
+    </text>
+    <text x="4.2" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+        <set attributeName="visibility" to="visible" begin="CtoD.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="hidden" begin="ResetR.begin" dur="0s" fill="freeze" />
+      R₉₀
+    </text>
+    <text x="6.2" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+        <set attributeName="visibility" to="visible" begin="BtoC.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="hidden" begin="ResetS.begin" dur="0s" fill="freeze" />
+      S₋₁,₁
+    </text>
+    <text x="9.1" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+        <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="hidden" begin="ResetS.begin" dur="0s" fill="freeze" />
+      S
+    </text>
+    <text x="9.8" y="-10" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono" visibility="hidden">
+        <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
+        <set attributeName="visibility" to="hidden" begin="ResetS.begin" dur="0s" fill="freeze" />
+      ½,½
+    </text>
+  </g>
+</svg>
+

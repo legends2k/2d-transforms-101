@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="6in" height="3in" viewBox="0 0 16 8" style="background-color: Cornsilk">"
+  <defs>
+    <pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
+      <path d="M 1 0 L 0 0 0 1" fill="none" stroke="blue" stroke-width="0.05"/>
+    </pattern>
+    <marker id="blueArrow" style="fill: blue; stroke: blue"
+            viewBox="0 0 10 10" refX="8.5" refY="5" 
+            markerUnits="strokeWidth"
+            markerWidth="4" markerHeight="3"
+            orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <marker id="redArrow" style="fill: red; stroke: red"
+            viewBox="0 0 10 10" refX="8.5" refY="5" 
+            markerUnits="strokeWidth"
+            markerWidth="4" markerHeight="3"
+            orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <marker id="org" markerWidth="2" markerHeight="2" refX="1" refY="1">
+        <circle cx="1" cy="1" r="1" style="stroke: none; fill: black;"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grid)" />
+  <g transform="translate(3, 5) scale(1, -1)">
+    <line x1="-3" y1="0" x2="13" y2="0"
+          stroke="black"
+          stroke-width="0.1" />
+    <line x1="0" y1="0" x2="1" y2="0"
+          marker-start="url(#org)"
+          marker-end="url(#blueArrow)"
+          stroke="blue"
+          stroke-width="0.1">
+      <animate attributeName="x2" to="6" begin="accessKey(3)" dur="1s" fill="freeze" />
+      <set id="Reset" attributeName="x2" to="1" begin="accessKey(r)" dur="0s" fill="freeze" />
+    </line>
+    <circle cx="1" cy="0" r="0.2" style="stroke: none; fill: blue">
+      <animate attributeName="cx" to="6" begin="accessKey(1)" dur="1s" fill="freeze" />
+      <set attributeName="cx" to="1" begin="Reset.begin" dur="0s" fill="freeze" />
+    </circle>
+    <text x="3" y="1" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">6
+      <set attributeName="visibility" to="visible" begin="accessKey(1)" dur="0s" fill="freeze" />
+      <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
+    </text>
+    <text x="-1" y="0" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono">
+      ₹
+    </text>
+    <g visibility="hidden">
+      <set attributeName="visibility" to="visible" begin="accessKey(2)" dur="0s" fill="freeze" />
+      <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
+      <line x1="-3" y1="2" x2="13" y2="2"
+            stroke="black"
+            stroke-width="0.1" />
+      <line x1="0" y1="2" x2="6" y2="2"
+            marker-start="url(#org)"
+            marker-end="url(#redArrow)"
+            stroke="red"
+            stroke-width="0.1" />
+      <text x="-1" y="-2" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono">
+        $
+      </text>
+    </g>
+  </g>
+</svg>
+

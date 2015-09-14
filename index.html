@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>2D Transformations 101</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="An introduction to transformations for practitioners" />
+		<meta name="author" content="Sundaram Ramaswamy" />
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -37,343 +37,721 @@
 	<body>
 
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
+              <section data-background-image="images/2D_affine_xforms.svg">
+					<h1>2D Transforms 101</h1>
+					<h3>A practitioner's introduction to transformations</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+					  <small><a href="http://stackoverflow.com/users/183120/legends2k">Sundaram Ramaswamy</a> / <a href="mailto:legends2k@yahoo.com">@legends2k</a></small>
 					</p>
-				</section>
-
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
+                    <p style="font-size: 50%">
+                      <small>This presentation has animated SVGs best viewed in <a href="http://www.firefox.com/">Firefox.</a></small><br />
+                      <small><a href="http://github.com/legends2k/2D-transforms-101">Read me</a> to know the shortcuts for animation control.</small>
+                    </p>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
+				  <h2>Overview</h2>
+                  <ul>
+					<li class="fragment">Definitions of <i>transformation (noun)</i>
+					  <small>
+                        <ul class="fragment">
+					      <li>the act of changing in form or shape or appearance</li>
+                          <li><i>(logic)</i> a set of algebraic formulas used to express the relations between elements, sets, etc., that form parts of a given system</li>
+					      <li><i>(mathematics)</i> a function that changes the position or direction of the axes of a coordinate system</li>
+					    </ul>
+                      </small>
+                    </li>
+                    <li class="fragment">Different, seemingly confusing, definitions alluding to a simple idea: <b>conversion</b></li>
+                    <li class="fragment">Conversion of a value $P$ to $P'$ within a system</li>
+                    <li class="fragment">Conversion of a value $P_a$ in one system to $P_b$ in another system</li>
+                    <li class="fragment">Conversion of a system into another</li>
+                    <li class="fragment">Intuition favoured over rigour</li>
+                  </ul>
 				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+                <section>
+                  <h2>Motivation</h2>
+                  <p style="text-align: left">
+                    A basic concept in <i>linear algebra</i> underpinning many domains
+                  </p>
+                  <ul>
+                    <li class="fragment">Graphics
+                      <ul>
+                        <li>Rendering</li>
+                        <li>UX Design</li>
+                        <li>Motion capture</li>
+                        <li>Animation</li>
+                      </ul>
+                    </li>
+                    <li class="fragment">Image Processing</li>
+                    <li class="fragment">Computer Vision</li>
+                    <li class="fragment">Robotics</li>
+                    <li class="fragment">Heterogeneous/Parallel Computing</li>
+                  </ul>
+                </section>
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
+                <section>
+                  <h2>Conventions Used</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="1">Canvas / Paper</li>
+                    <small class="fragment" data-fragment-index="0">
+                      <strike>RenderTarget, DeviceContext, GraphicsContext, Drawable, Frame buffer, Bitmap, Window, Form, Texture</strike>
+                    </small>
+                    <li class="fragment" data-fragment-index="2">Math-textbook coordinate system used as default
+                      <small>Origin sits at the left-bottom corner, X goes → and Y goes ↑</small>
+                    </li>
+                    <li class="fragment" data-fragment-index="3">Default rotation is counter-clockwise
+                      <small>
+                        <ul>
+                          <li class="fragment" data-fragment-index="4">Rotates a point ↺ (counter-clockwise) when θ > 0, ⟳ (clockwise) when θ < 0</li>
+                          <li class="fragment" data-fragment-index="5">Degrees despite most library functions expecting radians: π rad = 180°</li>
+                        </ul>
+                      </small>
+                    </li>
+                    <li class="fragment" data-fragment-index="6">
+                      Two ways to denote a 2D point $(x, y)$ as a matrix
+                      <small>
+                        <ol>
+                          <li class="fragment" data-fragment-index="7">Row matrix $\begin{pmatrix} x & y \end{pmatrix}$<i class="fragment" data-fragment-index="9">← we use this</i></li>
+                          <li class="fragment" data-fragment-index="8">Column matrix $\begin{pmatrix} x \\ y \end{pmatrix}$</li>
+                        </ol>
+                      </small>
+                    </li>
+                  </ul>
+                </section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+                <section>
+                  <h2>Conventions Used</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="4" type="image/svg+xml" data="images/systems.svg" style="float: right; width: 30%; padding: 5px"></object>
+                    <div style="float: left; width: 65%">
+                      <ul>
+                        <li class="fragment" data-fragment-index="0">Transformations act on points already existing
+                          <small>Creation of shapes (or rather plotting of points) is beyond purview</small>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">Transforming a shape really means transforming its points individually
+                          <small>Despite the naming of transform types (scale, rotate, shear, …) imply operation on a shape, a transform can only operate on a single point</small>
+                        </li>
+                        <!-- <small> -->
+                        <!--   <blockquote style="text-align:justify; width:90%; float:none" class="fragment">Every attempt to describe a position requires that we describe it relative to something else. Any description of a position is meaningful only in the context of some (typically “larger”) reference frame. Theoretically, we could establish a reference frame encompassing everything in existence and select a point to be the “origin” of this space, thus defining the “absolute” coordinate space. However, even if such an absolute coordinate space were possible, it would not be practical.<br />— 3D Math Primer, 2<sup>nd</sup> Edition -->
+                        <!--   </blockquote> -->
+                        <!-- </small> -->
+                        <li class="fragment" data-fragment-index="2">A <i>system/space</i> within which values (points) lives has
+                          <small>
+                            <ul>
+                              <li class="fragment" data-fragment-index="3">to be relative, no such <i>thing</i> as “absolute system”</li>
+                              <li class="fragment" data-fragment-index="5">an agreed-upon origin w.r.t another system</li>
+                              <li class="fragment" data-fragment-index="6">$n$ agreed-upon lengths as 1 unit in every considered direction w.r.t another system</li>
+                            </ul>
+                          </small>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+                <section>
+                  <h1>Part I</h1>
+                  <h2>Transforms</h2>
+                  <blockquote class="fragment">Changes made to a value within a system</blockquote>
+                  <p class="fragment">$X: P \rightarrow P'$</p>
+                </section>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+                <section>
+                  <h2>Scale</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="1">1D scaling is so ingrained we do it without forethought</li>
+                    <small>
+                      <span class="fragment" data-fragment-index="0">1 ticket = ₹50 ⇒ 3 tickets = 3 × 50 = ₹150</span>
+                      <span class="fragment" data-fragment-index="3"> — here $x = 50, s = 3$</span>
+                    </small>
+                    <li class="fragment" data-fragment-index="2">Multiplying the value $x$, with the scaling factor $s$ <i>(scalar)</i>, does the conversion $\boxed{x' = s x}$.
+                      <small>Enlarges if $s > 1$; shrinks if $0 < s < 1$; does no conversion when $s = 1$ (identity)</small></li>
+                    <li class="fragment" data-fragment-index="4">Same formula works in 2D; use another scalar to tackle the extra dimension: $S_{x, y} = (s_{x}, s_{y})$</li>
+                    <li class="fragment" data-fragment-index="5">For some $P(x, y)$ and $S_{x, y}$, the scaled <i>(transformed)</i> point
+                      $\boxed{P'(x', y') = PS_{x, y} = (s_{x}x, s_{y}y)}$</li>
+                    <li class="fragment" data-fragment-index="6">Scaling is uniform when $s_{x} = s_{y}$</li>
+                  </ul>
+                </section>
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+                <section>
+                  <h2>Example 2: Uniform Scale</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/uniform_scale.svg" style="float: right; width: 50%;"></object>
+                    <div class="fragment" data-fragment-index="1">
+                      $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
+                      Scale = (2, 2)\\
+                      \begin{array}{l|l}
+                      P & P' = PS_{2, 2}\\ \hline
+                      (2, 2) & (4, 4)\\
+                      (-2, 2) & (-4, 4)\\
+                      (-2, -2) & (-4, -4)\\
+                      (2, -2) & (4, -4)
+                      \end{array}$
+                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a larger square.</small>
+                    </div>
+                  </div><br />
+                  <div style="float: centre" class="fragment" data-fragment-index="3">
+                    $S_{2, 2}$ increases size while preserving shape — enlargement.
+                  </div>
+                </section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+                <section>
+                  <h2>Example 1: Non-uniform Scale</h2>
+                  <div>
+                      <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/nonuniform_scale.svg" style="float: right; width: 50%;"></object>
+                      <div class="fragment" data-fragment-index="1">
+                        $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
+                        Scale = (2, ½)\\
+                        \begin{array}{l|l}
+                        P & P' = PS_{2, ½}\\ \hline
+                        (2, 2) & (4, 1)\\
+                        (-2, 2) & (-4, 1)\\
+                        (-2, -2) & (-4, -1)\\
+                        (2, -2) & (4, -1)
+                        \end{array}$ 
+                        <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a rectangle.</small>
+                      </div>
+                  </div><br />
+                  <div style="float: centre" class="fragment" data-fragment-index="3">
+                    $S_{2, ½}$ is a shape-changing transformation — deformation.
+                  </div>
+                </section>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
+                <section>
+                  <h2>Example 3: Reflection across X-axis</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/flip.svg" style="float: right; width: 50%;"></object>
+                    <div class="fragment" data-fragment-index="1">
+                      $Triangle = \{ P_{1}, P_{2}, P_{3} \} \\
+                      Scale = (1, -1)\\
+                      \begin{array}{l|l}
+                      P & P' = PS_{1, -1}\\ \hline
+                      (0, 2) & (0, -2)\\
+                      (-2, -2) & (-2, 2)\\
+                      (2, -2) & (2, 2)
+                      \end{array}$
+                      <small style="float: left" class="fragment" data-fragment-index="2">Triangle' $\{ P'_{1}, P'_{2}, P'_{3} \}$ is triangle's reflection.</small>
+                    </div>
+                  </div><br />
+                  <div style="float: left" class="fragment" data-fragment-index="3">
+                    $S_{1, -1}$ mirrors an object while preserving shape and size.
+                  </div>
+                  <aside class="notes">
+					Enlarges when flip value < −1, shrinks when flip value between [−1, 0).
+                  </aside>
+                </section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
+                <section>
+                  <h2>Rotation</h2>
+                  <ul>
+                    <li class="fragment">Doesn't make much sense in 1D, but well defined in 2D</li>
+                    <li class="fragment">Trigonometry <i>says</i> if some point $P(x, y)$ is rotated through an angle $θ$, the rotated point
+                      $\boxed{P'(x', y') = PR_{θ} = (x \cos θ - y \sin θ, x \sin θ + y \cos θ)}$
+                    </li>
+                    <li class="fragment">No conversion (identity) when $θ = 0$
+                      <small><span class="fragment"> ∵ cos 0 = 1, sin 0 = 0 </span><span class="fragment"> → $PR_{0} = (1x - 0y, 0x + 1y) = (x, y) = P' = P$</span></small>
+                    </li>
+                    <li class="fragment">Negative angles can be made positive by adding 360
+                      <small><span class="fragment">θ = −90, θ = 360 − 90 = 270</span><span class="fragment"> — works since the resulting orientation is the same; doesn't work when animating</span></small>
+                    </li>
+                    <li class="fragment">These functions are periodic ⇒ $θ = θ \bmod 360$ (angle <i>wraps around</i>)</li>
+                  </ul>
+                </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+                <section>
+                  <h2>Example 4: Rotation</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/rotation.svg" style="float: right; width: 50%;"></object>
+                    <div class="fragment" data-fragment-index="1">
+                      $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
+                      Rotate = 45°\\
+                      \begin{array}{l|l}
+                      P & P' = PR_{45}\\ \hline
+                      (2, 2) & (0, 2.828)\\
+                      (-2, 2) & (-2.828, 0)\\
+                      (-2, -2) & (0, -2.828)\\
+                      (2, -2) & (2.828, 0)
+                      \end{array}$
+                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is an oriented square.</small>
+                    </div>
+                  </div><br /><br />
+                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
+                    $R_{45}$ is a rigid-body transform preserving both shape and size.
+                  </div>
+                </section>
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
+                <section>
+                  <h2>Example 5: X-Shear</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/shearX.svg" style="float: right; width: 50%;"></object>
+                    <div class="fragment" data-fragment-index="1">
+                      $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
+                      Shear = (1, 0)\\
+                      \begin{array}{l|l}
+                      P & P' = PK_{1, 0}\\ \hline
+                      (2, 2) & (4, 2)\\
+                      (-2, 2) & (0, 2)\\
+                      (-2, -2) & (-4, -2)\\
+                      (2, -2) & (0, -2)
+                      \end{array}$
+                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a parallelogram.</small>
+                    </div>
+                  </div><br />
+                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
+                    $K_{1, 0}$ is a shape-changing deformation.
+                  </div>                  
+                </section>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+                <section>
+                  <h2>Shear/Skew</h2>
+                  <ul>
+                    <li class="fragment">Shift in one direction proportional to the value in the other</li>
+                    <li class="fragment">$\boxed{ P'(x', y') = PK_{a, b} = (x + ay, bx + y) }$</li>
+                    <li class="fragment">X-shear or skew-X when a ≠ 0, b = 0</li>
+                    <li class="fragment">Y-shear or skew-Y when a = 0, b ≠ 0</li>
+                    <li class="fragment">Shear in both directions simultaneously is possible too</li>
+                    <li class="fragment">Identity when a = b = 0</li>
+                  </ul>
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+                <section>
+                  <h2 class="fragment" data-fragment-index="5">Linear Transformations</h2>
+                  <ul>
+                    <li>For some P(x, y), the transformation
+                      <ol>
+                        <li class="fragment" data-fragment-index="0">Scale $P' = (s_{x}x, s_{y}y)$</li>
+                        <li class="fragment" data-fragment-index="1">Rotation $P' = (x \cos θ - y \sin θ, x \sin θ + y \cos θ)$</li>
+                        <li class="fragment" data-fragment-index="2">Shear $P' = (x + ay, bx + y)$</li>
+                      </ol>
+                    </li>
+                    <li class="fragment" data-fragment-index="3">Generalised equation $\boxed{ P'(x', y') = PX = (ax + by, cx + dy) }$</li>
+                    <li class="fragment" data-fragment-index="4">The resulting value is some scaled combination of x & y</li>
+                    <li class="fragment" data-fragment-index="6"><i>Linear</i> since equation deals only with first powers of x & y</li>
+                    <li class="fragment" data-fragment-index="7">Linear transforms preserve collinearity
+                      <small class="fragment" data-fragment-index="8">Points on a line before the transform continue to be so after it too — straight lines will remain straight</small>
+                    </li>
+                    <li class="fragment" data-fragment-index="9">What about changes to P with no relation to x or y?</li>
+                  </ul>
+                </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+                <section>
+                  <h2>Translation</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="3">Translation in 1D is nothing but addition</li>
+                    <small>
+                        <span class="fragment" data-fragment-index="0">1 ticket = ₹50 ⇒ 3 tickets = 3 × 50 = ₹150</span>
+                        <span class="fragment" data-fragment-index="1">, but what about the flowers you got for your sweetheart on the way?</span>
+                        <span class="fragment" data-fragment-index="2">₹150 + ₹50 = ₹200</span><span class="fragment" data-fragment-index="8">. This has no correlation to the 3 friends going to the theatre.</span>
+                    </small>
+                    <li class="fragment" data-fragment-index="4">Adding an offset $t$, to the value $x$, does the conversion $\boxed{ x' = x + t }$</li>
+                    <li class="fragment" data-fragment-index="5">Same works in 2D; use another constant to tackle the extra dimension: $T_{x, y} = (t_{x}, t_{y})$</li>
+                    <li class="fragment" data-fragment-index="6">For some $P(x, y)$ and $T_{x, y}$, the translated point
+                      $\boxed{P'(x', y') = PT_{x, y} = (x + t_{x}, y + t_{y})}$</li>
+                    <li class="fragment" data-fragment-index="7">The added constant lacks any correlation to $x$ or $y$, unlike linear transforms</li>
+                  </ul>
+                </section>
 
-    var nodes = document.querySelectorAll( selector );
+                <section>
+                  <h2>Example 6: Translate</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/translate.svg" style="float: right; width: 50%;"></object>
+                    <div class="fragment" data-fragment-index="1">
+                      $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
+                      Translate = (3, 4)\\
+                      \begin{array}{l|l}
+                      P & P' = PT_{3, 4}\\ \hline
+                      (2, 2) & (5, 6)\\
+                      (-2, 2) & (1, 6)\\
+                      (-2, -2) & (1, 2)\\
+                      (2, -2) & (5, 2)
+                      \end{array}$
+                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is the same square.</small>
+                    </div>
+                  </div><br />
+                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
+                    $T_{3, 4}$ is a rigid-body transform that repositions an object.
+                  </div>                  
+                </section>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+                <section>
+                  <h2 class="fragment" data-fragment-index="4">Affine Transformations</h2>
+                  <ul>
+                    <li>For some P(x, y), the transformation
+                      <ol>
+                        <li class="fragment" data-fragment-index="0">Linear $P' = (ax + by, cx + dy)$</li>
+                        <li class="fragment" data-fragment-index="1">Translation $P' = (x + t_{x}, x + t_{y})$</li>
+                      </ol>
+                    </li>
+                    <li class="fragment" data-fragment-index="2">Generalised equation $\boxed{ P'(x', y') = PX = (ax + by + e, cx + dy + f) }$</li>
+                    <li class="fragment" data-fragment-index="3">A linear transformation followed by a translation</li>
+                    <li class="fragment" data-fragment-index="5">Properties
+                      <ul>
+                        <li><span class="fragment" data-fragment-index="6">Preserves collinearity</span><span class="fragment" data-fragment-index="7">, parallelism of lines</span><span class="fragment" data-fragment-index="8"> and relative distance between points on a straight line</span></li>
+                        <li class="fragment" data-fragment-index="9">Doesn't preserve angles between lines or distances between points</li>
+                      </ul>
+                    </li>
+                </section>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+                <section>
+                  <h2>Affine Transforms</h2>
+                  <object type="image/svg+xml" data="images/LinearTransformations.svg" style="align: centre"></object>
+                  <small>Image credit: Ldo<br />Who generously shared it under Creative Commons 3.0</small>
+                </section>
 
-				<section>
-					<h2>Marvelous List</h2>
+                <section>
+                  <h2>Concatenating transforms</h2>
+                  <ul>
+                    <li class="fragment">Multiple transforms may be concatenated</li>
+                    <li class="fragment">Consider X₁, X₂, X₃ concatenated in that order: $P'(x', y') = PX_1X_2X_3$</li>
+                    <li class="fragment"><span class="fragment">Result of $PX_1 = P'_1$</span><span class="fragment"> is fed to X₂: $P'_1X_2 = P'_2$</span><span class="fragment"> is fed to $P'_2X_3 = P'$</span> — just function composition: $g(f(x))$</li>
+                    <li class="fragment">$P'_1 = (a_1x + b_1y + e_1, c_1x + d_1y + f_1)$
+                      <span class="fragment">$P'_2 = (a_2(a_1x + b_1y + e_1) + b_2(c_1x + d_1y + f_1) + e_2,\\c_2(a_1x + b_1y + e_1) + d_2(c_1x + d_1y + f_1) + f_2)$</span></li>
+                    <li class="fragment">$P'_3$ = <i class="fragment">… seriously, should we be doing this? Isn't there a better way!</i></li>
+                    <li class="fragment">Yes, there is. <span class="fragment"><i>Matrix</i> to the rescue.</span></li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>Transformation Matrices</h2>
+                  <ul>
+                    <li class="fragment">Arthur Cayley demonstrated that matrices succinctly represent the algebraic form of transforms</li>
+                    <small class="fragment" style="display:table">$\begin{pmatrix}x' & y'\end{pmatrix} = \begin{pmatrix}x & y\end{pmatrix} \begin{pmatrix}a & c\\b & d\end{pmatrix}$ <span class="fragment" style="display: table-cell;vertical-align: middle;">This only covers linear transforms. What about translation?</span></small>
+                    <li class="fragment">$\begin{pmatrix}x' & y' & 1\end{pmatrix} = \begin{pmatrix}x & y & 1\end{pmatrix} \begin{pmatrix}a & c & 0\\b & d & 0\\e & f & 1\end{pmatrix}$</li>
+                    <li class="fragment">Keep multiplying matrices while maintaining a concise form for any complex transform <small style="vertical-align: middle;">— <i>"One matrix to transform 'em all!"</i></small></li>
+                    <li class="fragment">2D transforms need 3D matrices?! But <i>why</i>?</li>
+                    <small class="fragment">2D has 3 DoF: X & Y axes (linear) and origin (translation)</small>
+                    <li class="fragment">Literature calls this <i>homogeneous coordinates</i></li>
+                  </ul>
+                  <aside class="notes">
 					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+                      <li>The 1 in the point picks up the e and f without x and y's influence. It is eventually discarded.</li>
+                      <li>Pile up transforms by multiplying matrices.</li>
+                    </ul>
+                  </aside>
+                </section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                <section>
+                  <h2>Scale Matrix</h2>
+                  <p>
+                    $P'(x', y') = PS_{x, y} = (s_{x}x, s_{y}y)\\
+                    \begin{pmatrix} x' & y' & 1 \end{pmatrix} = \begin{pmatrix}x & y & 1\end{pmatrix}\begin{pmatrix}s_x & 0 & 0\\0 & s_y & 0\\0 & 0 & 1\end{pmatrix}
+                    $
+                  </p>
+                </section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
+                <section>
+                  <h2>Rotation Matrix</h2>
+                  <p>
+                    $P'(x', y') = PR_{θ} = (x \cos θ − y \sin θ, x \sin θ + y \cos θ)\\
+                    \begin{pmatrix} x' & y' & 1 \end{pmatrix} = \begin{pmatrix}x & y & 1\end{pmatrix}\begin{pmatrix}\cos θ & \sin θ & 0\\−\sin θ & \cos θ & 0\\0 & 0 & 1\end{pmatrix}
+                    $
+                  </p>
+                </section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+                <section>
+                  <h2>Shear Matrix</h2>
+                  <p>
+                    $P'(x', y') = PK_{x, y} = (x + ay, bx + y)\\
+                    \begin{pmatrix} x' & y' & 1 \end{pmatrix} = \begin{pmatrix}x & y & 1\end{pmatrix}\begin{pmatrix}1 & b & 0\\a & 1 & 0\\0 & 0 & 1\end{pmatrix}
+                    $
+                  </p>
+                </section>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+                <section>
+                  <h2>Translation Matrix</h2>
+                  <p>
+                    $P'(x', y') = PT_{x, y} = (x + t_{x}, y + t_{y})\\
+                    \begin{pmatrix} x' & y' & 1 \end{pmatrix} = \begin{pmatrix}x & y & 1\end{pmatrix}\begin{pmatrix}1 & 0 & 0\\0 & 1 & 0\\t_{x} & t_{y} & 1\end{pmatrix}
+                    $
+                  </p>
+                </section>
 
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+                <section>
+                  <h2>Matrices Don't Commute</h2>
+                  <ul>
+                    <li class="fragment"><i>You mean, they don't go to office!?</i>
+                    <li class="fragment"><i>No, silly!</i> The order of matrix multiplication matters</li>
+                    <li class="fragment">AB ≠ BA</li>
+                    <li class="fragment">This is unlike scalar multiplication …<br />
+                      <small>3 * 4 = 4 * 3</small></li>
+                    <li class="fragment">… but similar to scalar subtraction<br />
+                      <small>3 − 4 ≠ 4 − 3</small></li>
+                    <li class="fragment">Being mindful of anti-commutativity is important</li>
+                  </ul>
+                </section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+                <section>
+                  <h2>Order Does Matter</h2>
+                  <div>
+                    <object type="image/svg+xml" data="images/rot_trans.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                    <object type="image/svg+xml" data="images/trans_rot.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                  </div>
+                </section>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
+                <section>
+                  <h2>Example 7: Scale not so centre</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/noncentre_scale.svg" style="float: right; width: 50%;"></object>
+                    <div class="fragment" data-fragment-index="1">
+                      $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
+                      Scale = (2, 2)\\
+                      \begin{array}{l|l}
+                      P & P' = PS_{2, 2}\\ \hline
+                      (1, 1) & (2, 2)\\
+                      (5, 1) & (10, 2)\\
+                      (5, 5) & (10, 10)\\
+                      (1, 5) & (2, 10)
+                      \end{array}$
+                      <small style="float: left" class="fragment" data-fragment-index="2">Centre of square' is no longer the same.</small>
+                    </div>
+                  </div><br />
+                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
+                    Transforms, on objects not at origin, additionally translates.
+                  </div>
+                  <aside class="notes">
+					Square's centre was at (3, 3); centre of square' is (6, 6).
+                  </aside>
+                </section>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
+                <section>
+                  <h2>Transform about arbitrary point</h2>
+                  <ul>
+                    <li class="fragment">Transforms thus far operated only w.r.t. the system's origin</li>
+                    <li class="fragment">What if we need to transform w.r.t some arbitrary point?</li>
+                    <li class="fragment">Use cases of such scenarios are plenty
+                      <small>
+                        <ul>
+                          <li class="fragment">Scaling an object maintaining its centre</li>
+                          <li class="fragment">Zooming at a particular point</li>
+                          <li class="fragment">Rotating an object around its own axis</li>
+                          <li class="fragment">Not all objects are at the origin</li>
+                        </ul>
+                      </small>
+                    </li>
+                    <li class="fragment">Simple solution<br />
+                      <small>
+                        <ul>
+                          <li class="fragment">Translate anchor to origin</li>
+                          <li class="fragment">Perform the transform</li>
+                          <li class="fragment">Translate anchor back to original spot</li>
+                        </ul>
+                      </small><br />
+                      <span class="fragment">$\boxed{ P' = P~T_{-c_{x}, -c_{y}}~X~T_{c_{x}, c_{y}} }$</span>
+                    </li>
+                  </ul>
+                  <aside class="notes">
+					Earth's rotation around the sun and by itself.
+                  </aside>
+                </section>
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+                <section>
+                  <h2>Example 8: Scale about centre</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/centre_scale.svg" style="float: right; width: 50%;"></object>
+                    <div class="fragment" data-fragment-index="1">
+                      $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
+                      Scale = (2, 2)\\
+                      \begin{array}{l|l}
+                      P & PT_{-3, -3}S_{2, 2}T_{3, 3}\\ \hline
+                      (2, 2) & (1, 1)\\
+                      (4, 2) & (5, 1)\\
+                      (4, 4) & (5, 5)\\
+                      (2, 4) & (1, 5)
+                      \end{array}$
+                    </div>
+                  </div><br />
+                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
+                    Object scaled with respect to its centre.
+                  </div>
+                  <aside class="notes">
+					Square's centre was at (3, 3); centre of square' is (6, 6).
+                  </aside>
+                </section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+                <section>
+                  <h1>Part II</h2>
+                  <h2>Transforming Systems</h2>
+                  <blockquote class="fragment">Converting a system into another</blockquote>
+                  <p class="fragment">$L_{a \rightarrow b}: A \rightarrow B$</p>
+                </section>
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
+                <section>
+                  <h2>Multiple Systems</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">What's the need for multiple coordinate systems?</li>
+                    <li class="fragment" data-fragment-index="5">Many times working in a single, global coordinate system doesn't work</li>
+                    <small>
+                      <span class="fragment" data-fragment-index="1"><b>You:</b> Cute girl, 3'o clock — <b>Friend:</b></span><span class="fragment" data-fragment-index="2"> 😇 Nice!</span><br />
+                      <span class="fragment" data-fragment-index="3"><b>You:</b> Cute girl, 17.37°N 78.48°E — <b>Friend:</b></span><span class="fragment" data-fragment-index="4"> 😕<i>(what did this dude have for lunch!?!)</i></span><br />
+                    </small>
+                    <li class="fragment" data-fragment-index="6">We all work in our own <i>local</i> coordinate system</li>
+                    <li class="fragment" data-fragment-index="7">Gives enough abstraction to not worry about systems above or below us</li>
+                  </ul>
+                </section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+                <section>
+                  <h2>Redefining A System</h2>
+                  <ul>
+                    <li class="fragment">A system is defined by its origin and unit distances in all considered directions w.r.t another system</li>
+                    <li class="fragment">Transforming a system is just changing the origin and unit distances such that it's the same as another</li>
+                    <li class="fragment">Same matrix can transform both a point and a system</li>
+                    <li class="fragment">Simple 1D example where transform is just a scalar</li>
+                  </ul>
+                  <div>
+                    <object class="fragment" type="image/svg+xml" data="images/1d_map.svg" style="float: centre; padding: 5px"></object>
+                  </div>
+                </section>
+
+                <section>
+                  <h2>The Double Life of a Matrix</h2>
+                  <div>
+                    <object class="fragment" type="image/svg+xml" data="images/point_scale.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                    <object class="fragment" type="image/svg+xml" data="images/sys_scale.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                  </div>
+                </section>
+
+                <section>                    
+                  <h2>Pot-ay-to — Pot-ah-to</h2>
+                  <p class="fragment">Two ways to look at a complex transform</p>
+                  <div>
+                    <object class="fragment" type="image/svg+xml" data="images/trans_rot.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                    <object class="fragment" type="image/svg+xml" data="images/sys_rot_trans.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                  </div>
+                </section>
+
+                <section>
+                  <h2>Transforming points & systems</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">A series of (concatenated) transforms may be seen
+                      <ol>
+                        <li class="fragment" data-fragment-index="1">left to right — points transformed in one system</li>
+                        <li class="fragment" data-fragment-index="2">right to left — systems transformed</li>
+                      </ol>
+                    </li>
+                    <li class="fragment" data-fragment-index="3">$P_a$ interpreted in system B would spatially represent $P_a'$</li>
+                    <li class="fragment" data-fragment-index="4">Point transforms are concatenated by post-multiplying $P' = P$<span class="fragment" data-fragment-index="5">$X_1$</span><span class="fragment" data-fragment-index="6">$X_2$</span><span class="fragment" data-fragment-index="7">$X_3$</span></li>
+                    <li class="fragment" data-fragment-index="8">System transforms are concatenated by pre-multiplying $L_{a \rightarrow b} = $<span class="fragment" data-fragment-index="11">$X_3$</span> <span class="fragment" data-fragment-index="10">$X_2$</span><span class="fragment" data-fragment-index="9"> $X_1$</span></li>
+                    <li class="fragment" data-fragment-index="12">Since the order of multiplication is reversed result would be different (anti-commutativity)</li>
+                    <li class="fragment" data-fragment-index="13">Reason for same result is we transformed in reverse order<br />
+                      <small class="fragment" data-fragment-index="14">Reverse order and pre-multiply → same order <span class="fragment" data-fragment-index="15">(¬¬x = x)</span></small></li>
+                  </ul>
+                  <aside class="notes">
+                    Easy to get confused. Pause, ask if everyone if ok and show the image for clarification.
+                  </aside>
+                </section>
+
+                <section>
+                  <h2>Transform A into B</h2>
+                  <object class="fragment" type="image/svg+xml" data="images/sys_xform.svg"></object>
+                </section>
+
+                <section>
+                  <h1>Part III</h1>
+                  <h2>Mapping</h2>
+                  <blockquote>Converting a value in one system to another</blockquote>
+                  <p class="fragment">$M_{a \rightarrow b}: P_a \rightarrow P_b$</p>
+                </section>
+
+                <section>
+                  <h2>Mapping</h2>
+                  <ul>
+                    <li class="fragment">The most important feature of a transform</li>
+                    <li class="fragment">Sole reason for the merit of having multiple systems<br />
+                      <small class="fragment">Work in a comfortable system and map result to some other</small>
+                    </li>
+                    <li class="fragment">
+                      Multiple systems, and there by mapping between them, is more common in engineering
+                      <small>
+                        <ul>
+                          <li class="fragment">Different countries, different currency and measurement systems</li>
+                          <li class="fragment">Most words of a language (system) has a mapping (translation) to words of another language</li>
+                          <li class="fragment">Every window on screen has its own viewport transform mapping to the screen canvas</li>
+                          <li class="fragment">Each group has a mapping to its parent group: SVG, PDF, …</li>
+                        </ul>
+                      </small>
+                    </li>
+                    <li class="fragment"><i>(physics)</i> Mapping passive; transforming active
+                      <small>
+                        <span class="fragment">Active because old value becomes a new value — actually different values</span><br />
+                        <span class="fragment">Passive since same value is just converted to a new unit</span>
+                      </small>
+                    </li>
+                    <li class="fragment">Active transforms are relatively less frequent, mostly used in animation</li>
+                  </ul>
+				  <aside class="notes">
+					Difference between active and passive:<br />
+                    1L and 0.264 gallon of fuel is inherently same quantity.<br />
+                    Pouring ¼ of your bike's fuel to friend's tank would actually change the quantity you're left with.
+				  </aside>
+                </section>
+
+                <section>
+                  <h2>Map A to B</h2>
+                  <div>
+                    <object class="fragment" type="image/svg+xml" data="images/map_a2b.svg" style="float: right; width: 50%; padding: 5px"></object>
+                    <div>
+                      <span class="fragment">$P_a M_{a \rightarrow b} = P_b$</span><br /><br />
+                      <span class="fragment">$M_{a \rightarrow b} = S_{2, 2} = L_{b \rightarrow a}$</span><br /><br />
+                      <span class="fragment">$\boxed{ M_{a \rightarrow b} = L_{b \rightarrow a} }$</span>
+                    </div>
+                  </div>
+                  <blockquote style="float: left; text-align: left; width: 45%" class="fragment">
+                    The same transform that maps points of system A to points in B also transforms system B into A
+                  </blockquote>
+                </section>
+
+                <section>
+                  <h2>Hierarchical Transforms</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">
+                      Mapping with many systems in between is common
+                      <small>
+                        <ul>
+                          <li>Boy is inside a room</li>
+                          <li>Room is inside a house</li>
+                          <li>House is inside … <i>Alright, alright, I get it!</i></li>
+                          <li>Now map points w.r.t to the boy to points w.r.t the city space</li>
+                        </ul>
+                      </small>
+                    </li>
+                    <li class="fragment" data-fragment-index="1">Once a mapping is applied to a canvas the rest of the calculations operate on that space</li>
+                    <li class="fragment" data-fragment-index="2">Say the calculator is set to divide every value by 60
+                    <small>Now all values are implicitly in $; needn't worry about conversion, you operate in ₹ always</small></li>
+                    <li class="fragment" data-fragment-index="3">$\boxed{M_{a \rightarrow c} = M_{a \rightarrow b} M_{b \rightarrow c}}$
+                      <small style="vertical-align: baseline"><i class="fragment" data-fragment-index="4">(order, of course, matters)</i></small>
+                    </li>
+                    <li class="fragment" data-fragment-index="6">$L_{c \rightarrow a} = ~$<span class="fragment" data-fragment-index="8">$L_{b \rightarrow a}~$</span> <span class="fragment" data-fragment-index="7">$L_{c \rightarrow b}$</span></li><br />
+                      <small class="fragment" data-fragment-index="5">∵ $M_{a \rightarrow b} = L_{b \rightarrow a}$</small>                    
+                  </ul>
+				  <aside class="notes">
+                    Robotics example of mapping from world to finger space.<br />
+                    Order doesn't matter in 1D since 1D multiplication is commutative.
+				  </aside>
+                </section>
+
+                <section>
+                  <h2>Map Boy space to Street space</h2>
+                  <div>
+                    <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/Boy2Street.svg" style="float: right; width: 50%;"></object>
+                    <div style="text-align: left">
+                      <span class="fragment" data-fragment-index="1">$M_{b \rightarrow s}$ = </span><span class="fragment" data-fragment-index="2">$L_{s \rightarrow b}$</span><br />
+                      <span class="fragment" data-fragment-index="3">$L_{s \rightarrow b}$ = </span><span class="fragment" data-fragment-index="6">$L_{k \rightarrow b}~$</span><span class="fragment" data-fragment-index="5">$L_{h \rightarrow k}~$</span><span class="fragment" data-fragment-index="4">$L_{s \rightarrow h}$</span></br>
+                      <span class="fragment" data-fragment-index="7">$L_{s \rightarrow h}$ = </span><span class="fragment" data-fragment-index="10">$T_{0, -6}~$</span><span class="fragment" data-fragment-index="9">$S_{1, -1}~$</span><span class="fragment" data-fragment-index="8">$S_{⅔, ⅔}$</span><br />
+                      <span class="fragment" data-fragment-index="11">$L_{h \rightarrow k}$ = </span><span class="fragment" data-fragment-index="14">$R_{-90}~$</span><span class="fragment" data-fragment-index="13">$S_{½, ½}~$</span><span class="fragment" data-fragment-index="12">$T_{2, 4}$</span><br />
+                      <span class="fragment" data-fragment-index="15">$L_{k \rightarrow b}$ = </span><span class="fragment" data-fragment-index="17">$R_{135}~$</span><span class="fragment" data-fragment-index="16">$T_{4, 2}$</span><br /><br />
+                      <small>
+                        <span class="fragment" data-fragment-index="18">$M_{b \rightarrow s} = \begin{pmatrix}0.2357 & -0.2357 & 0\\-0.2357 & -0.2357 & 0\\2 & 2.6667 & 1\end{pmatrix}$</span>
+                      </small>
+                    </div>
+                  </div><br />
+                </section>
+
+                <section>
+                  <h1>Thank You</h1>
+                </section>
 
 			</div>
 
@@ -387,12 +765,17 @@ Reveal.addEventListener( 'customevent', function() {
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+                center: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
-
+                mouseWheel: true,
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				math: {
+				config: 'TeX-AMS-MML_SVG'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
 
 				// Optional reveal.js plugins
 				dependencies: [
@@ -400,9 +783,8 @@ Reveal.addEventListener( 'customevent', function() {
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/math/math.js', async: true }				]
 			});
 
 		</script>
