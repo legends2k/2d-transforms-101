@@ -217,15 +217,14 @@
 		keyboardShortcuts = {
 			'N  ,  SPACE':			'Next slide',
 			'P':					'Previous slide',
-			'&#8592;  ,  H':		'Navigate left',
-			'&#8594;  ,  L':		'Navigate right',
-			'&#8593;  ,  K':		'Navigate up',
-			'&#8595;  ,  J':		'Navigate down',
 			'Home':					'First slide',
 			'End':					'Last slide',
 			'B  ,  .':				'Pause',
 			'F':					'Fullscreen',
-			'ESC, O':				'Slide overview'
+			'ESC, O':				'Slide overview',
+            'Click SVG image':      'Focus animation for below shortcuts to work',
+            '1, 2, …':              'Animation next frame',
+            'r':                    'Animation reset'
 		};
 
 	/**
