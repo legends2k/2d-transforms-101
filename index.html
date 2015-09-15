@@ -45,8 +45,8 @@
 					<p>
 					  <small><a href="http://stackoverflow.com/users/183120/legends2k">Sundaram Ramaswamy</a> / <a href="mailto:legends2k@yahoo.com">@legends2k</a></small>
 					</p>
-                    <p style="font-size: 50%">
-                      <small><a href="http://github.com/legends2k/2d-transforms-101#2d-transforms-101">Read me</a> first! Press <code>?</code> for animation control shortcuts.</small><br />
+                    <p style="font-size: 80%">
+                      <small><a href="https://github.com/legends2k/2d-transforms-101#2d-affine-transforms-101">Read me</a> first! Press <code>?</code> for animation control shortcuts.</small><br />
                       <small>This presentation has animated SVGs best viewed in <a href="http://www.firefox.com/">Firefox.</a></small>
                     </p>
 				</section>
@@ -177,7 +177,7 @@
                 </section>
 
                 <section>
-                  <h2>Example 2: Uniform Scale</h2>
+                  <h2>Example 1: Uniform Scale</h2>
                   <div>
                     <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/uniform_scale.svg" style="float: right; width: 50%;"></object>
                     <div class="fragment" data-fragment-index="1">
@@ -190,16 +190,15 @@
                       (-2, -2) & (-4, -4)\\
                       (2, -2) & (4, -4)
                       \end{array}$
-                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a larger square.</small>
+                      <br /><br /><br />
+                      <small class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a larger square.</small>
                     </div>
-                  </div><br />
-                  <div style="float: centre" class="fragment" data-fragment-index="3">
-                    $S_{2, 2}$ increases size while preserving shape — enlargement.
+                    <span class="fragment" data-fragment-index="3">$S_{2, 2}$ increases size while preserving shape — enlargement.</span>
                   </div>
                 </section>
 
                 <section>
-                  <h2>Example 1: Non-uniform Scale</h2>
+                  <h2>Example 2: Non-uniform Scale</h2>
                   <div>
                       <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/nonuniform_scale.svg" style="float: right; width: 50%;"></object>
                       <div class="fragment" data-fragment-index="1">
@@ -211,12 +210,11 @@
                         (-2, 2) & (-4, 1)\\
                         (-2, -2) & (-4, -1)\\
                         (2, -2) & (4, -1)
-                        \end{array}$ 
-                        <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a rectangle.</small>
+                        \end{array}$
+                        <br /><br />
+                        <small class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a rectangle.</small>
                       </div>
-                  </div><br />
-                  <div style="float: centre" class="fragment" data-fragment-index="3">
-                    $S_{2, \frac{1}{2}}$ is a shape-changing transformation — deformation.
+                      <span class="fragment" data-fragment-index="3">$S_{2, \frac{1}{2}}$ is a shape-changing transformation — deformation.</span>
                   </div>
                 </section>
 
@@ -233,11 +231,10 @@
                       (-2, -2) & (-2, 2)\\
                       (2, -2) & (2, 2)
                       \end{array}$
-                      <small style="float: left" class="fragment" data-fragment-index="2">Triangle' $\{ P'_{1}, P'_{2}, P'_{3} \}$ is triangle's reflection.</small>
+                      <br /><br />
+                      <small class="fragment" data-fragment-index="2">Triangle' $\{ P'_{1}, P'_{2}, P'_{3} \}$ is triangle's reflection.</small>
                     </div>
-                  </div><br />
-                  <div style="float: left" class="fragment" data-fragment-index="3">
-                    $S_{1, -1}$ mirrors an object while preserving shape and size.
+                    <span class="fragment" data-fragment-index="3">$S_{1, -1}$ mirrors an object while preserving shape and size.</span>
                   </div>
                   <aside class="notes">
 					Enlarges when flip value < −1, shrinks when flip value between [−1, 0).
@@ -275,11 +272,10 @@
                       (-2, -2) & (0, -2.828)\\
                       (2, -2) & (2.828, 0)
                       \end{array}$
-                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is an oriented square.</small>
+                      <br />
+                      <small class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is an oriented square.</small>
                     </div>
-                  </div><br /><br />
-                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
-                    $R_{45}$ is a rigid-body transform preserving both shape and size.
+                    <span class="fragment" data-fragment-index="3">$R_{45}$ is a rigid-body transform preserving both shape &amp; size.</span>
                   </div>
                 </section>
 
@@ -297,12 +293,11 @@
                       (-2, -2) & (-4, -2)\\
                       (2, -2) & (0, -2)
                       \end{array}$
-                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a parallelogram.</small>
-                    </div>
-                  </div><br />
-                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
-                    $K_{1, 0}$ is a shape-changing deformation.
-                  </div>                  
+                      <br /><br />
+                      <small class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is a parallelogram.</small>
+                    </div><br />
+                    <span class="fragment" data-fragment-index="3">$K_{1, 0}$ is a shape-changing deformation.</span>
+                  </div>
                 </section>
 
                 <section>
@@ -368,12 +363,11 @@
                       (-2, -2) & (1, 2)\\
                       (2, -2) & (5, 2)
                       \end{array}$
-                      <small style="float: left" class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is the same square.</small>
-                    </div>
-                  </div><br />
-                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
-                    $T_{3, 4}$ is a rigid-body transform that repositions an object.
-                  </div>                  
+                      <br /><br />
+                      <small class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is the same square.</small>
+                    </div><br />
+                    <span class="fragment" data-fragment-index="3">$T_{3, 4}$ is a rigid-body transform that repositions an object.</span>
+                  </div>
                 </section>
 
                 <section>
@@ -397,8 +391,8 @@
 
                 <section>
                   <h2>Affine Transforms</h2>
-                  <object type="image/svg+xml" data="images/LinearTransformations.svg" style="align: centre"></object>
-                  <small>Image credit: Ldo<br />Who generously shared it under Creative Commons 3.0</small>
+                    <object style="background: Cornsilk" type="image/svg+xml" data="images/LinearTransformations.svg"></object><br />
+                  <small style="vertical-align: text-bottom">Image generously shared under Creative Commons 3.0<br/>Credit: <i>Ldo</i></small>
                 </section>
 
                 <section>
@@ -486,8 +480,8 @@
                 <section>
                   <h2>Order Does Matter</h2>
                   <div>
-                    <object type="image/svg+xml" data="images/rot_trans.svg" style="float: centre; width: 48%; padding: 5px"></object>
-                    <object type="image/svg+xml" data="images/trans_rot.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                    <object type="image/svg+xml" data="images/rot_trans.svg" style="width: 48%; padding: 5px"></object>
+                    <object type="image/svg+xml" data="images/trans_rot.svg" style="width: 48%; padding: 5px"></object>
                   </div>
                 </section>
 
@@ -505,11 +499,10 @@
                       (5, 5) & (10, 10)\\
                       (1, 5) & (2, 10)
                       \end{array}$
-                      <small style="float: left" class="fragment" data-fragment-index="2">Centre of square' is no longer the same.</small>
-                    </div>
-                  </div><br />
-                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
-                    Transforms, on objects not at origin, additionally translates.
+                      <br /><br />
+                      <small class="fragment" data-fragment-index="2">Centre of square' is no longer the same.</small>
+                    </div><br />
+                    <span class="fragment" data-fragment-index="3">Transforms, on objects not at origin, additionally translates.</span>
                   </div>
                   <aside class="notes">
 					Square's centre was at (3, 3); centre of square' is (6, 6).
@@ -521,7 +514,7 @@
                   <ul>
                     <li class="fragment">Transforms thus far operated only w.r.t. the system's origin</li>
                     <li class="fragment">What if we need to transform w.r.t some arbitrary point?</li>
-                    <li class="fragment">Use cases of such scenarios are plenty
+                    <li class="fragment">Use cases of such scenarios are plenty<br />
                       <small>
                         <ul>
                           <li class="fragment">Scaling an object maintaining its centre</li>
@@ -561,10 +554,9 @@
                       (4, 4) & (5, 5)\\
                       (2, 4) & (1, 5)
                       \end{array}$
+                      <br />
                     </div>
-                  </div><br />
-                  <div style="text-align: centre" class="fragment" data-fragment-index="3">
-                    Object scaled with respect to its centre.
+                    <span class="fragment" data-fragment-index="3">Object scaled with respect to its centre.</span>
                   </div>
                   <aside class="notes">
 					Square's centre was at (3, 3); centre of square' is (6, 6).
@@ -601,15 +593,15 @@
                     <li class="fragment">Simple 1D example where transform is just a scalar</li>
                   </ul>
                   <div>
-                    <object class="fragment" type="image/svg+xml" data="images/1d_map.svg" style="float: centre; padding: 5px"></object>
+                    <object class="fragment" type="image/svg+xml" data="images/1d_map.svg" style="padding: 5px"></object>
                   </div>
                 </section>
 
                 <section>
                   <h2>The Double Life of a Matrix</h2>
                   <div>
-                    <object class="fragment" type="image/svg+xml" data="images/point_scale.svg" style="float: centre; width: 48%; padding: 5px"></object>
-                    <object class="fragment" type="image/svg+xml" data="images/sys_scale.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                    <object class="fragment" type="image/svg+xml" data="images/point_scale.svg" style="width: 48%; padding: 5px"></object>
+                    <object class="fragment" type="image/svg+xml" data="images/sys_scale.svg" style="width: 48%; padding: 5px"></object>
                   </div>
                 </section>
 
@@ -617,8 +609,8 @@
                   <h2>Pot-ay-to — Pot-ah-to</h2>
                   <p class="fragment">Two ways to look at a complex transform</p>
                   <div>
-                    <object class="fragment" type="image/svg+xml" data="images/trans_rot.svg" style="float: centre; width: 48%; padding: 5px"></object>
-                    <object class="fragment" type="image/svg+xml" data="images/sys_rot_trans.svg" style="float: centre; width: 48%; padding: 5px"></object>
+                    <object class="fragment" type="image/svg+xml" data="images/trans_rot.svg" style="width: 48%; padding: 5px"></object>
+                    <object class="fragment" type="image/svg+xml" data="images/sys_rot_trans.svg" style="width: 48%; padding: 5px"></object>
                   </div>
                 </section>
 
@@ -632,8 +624,8 @@
                       </ol>
                     </li>
                     <li class="fragment" data-fragment-index="3">$P_a$ interpreted in system B would spatially represent $P_a'$</li>
-                    <li class="fragment" data-fragment-index="4">Point transforms are concatenated by post-multiplying $P' = P$<span class="fragment" data-fragment-index="5">$X_1$</span><span class="fragment" data-fragment-index="6">$X_2$</span><span class="fragment" data-fragment-index="7">$X_3$</span></li>
-                    <li class="fragment" data-fragment-index="8">System transforms are concatenated by pre-multiplying $L_{a \rightarrow b} = $<span class="fragment" data-fragment-index="11">$X_3$</span> <span class="fragment" data-fragment-index="10">$X_2$</span><span class="fragment" data-fragment-index="9"> $X_1$</span></li>
+                    <li class="fragment" data-fragment-index="4">Point transforms are concatenated by post-multiplying<br />$P' = P$<span class="fragment" data-fragment-index="5">$X_1$</span><span class="fragment" data-fragment-index="6">$X_2$</span><span class="fragment" data-fragment-index="7">$X_3$</span></li>
+                    <li class="fragment" data-fragment-index="8">System transforms are concatenated by pre-multiplying<br />$L_{a \rightarrow b} = $<span class="fragment" data-fragment-index="11">$X_3$</span> <span class="fragment" data-fragment-index="10">$X_2$</span><span class="fragment" data-fragment-index="9"> $X_1$</span></li>
                     <li class="fragment" data-fragment-index="12">Since the order of multiplication is reversed result would be different (anti-commutativity)</li>
                     <li class="fragment" data-fragment-index="13">Reason for same result is we transformed in reverse order<br />
                       <small class="fragment" data-fragment-index="14">Reverse order and pre-multiply → same order <span class="fragment" data-fragment-index="15">(¬¬x = x)</span></small></li>
