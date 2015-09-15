@@ -55,12 +55,12 @@
       <animate attributeName="y2" to="2" begin="AtoB.begin" dur="1s" fill="freeze" />
       <set attributeName="y2" to="1" begin="Reset.begin" dur="0s" fill="freeze" />
     </line>
-    <text x="3" y="-3" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="3" y="-3" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
       S₂,₂
     </text>
-    <text x="5.3" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="5.3" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetR.begin" dur="0s" fill="freeze" />
       R₄₅

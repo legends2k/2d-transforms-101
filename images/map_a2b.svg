@@ -66,18 +66,18 @@
           stroke-width="0.1">
     </line>
     <circle cx="2" cy="2" r="0.15" fill="blue" />
-    <text x="3" y="-4" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="3" y="-4" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
       S₂,₂
     </text>
-    <text x="3" y="-2.5" transform="scale(1, -1)" font-size="0.8" font-family="Ubuntu Mono" fill="red">
+    <text x="3" y="-2.5" transform="scale(1, -1)" font-size="0.8" fill="red">
       Pₐ
     </text>
-    <text x="3" y="-0.8" transform="scale(1, -1)" font-size="0.8" font-family="Ubuntu Mono" fill="black">
+    <text x="3" y="-0.8" transform="scale(1, -1)" font-size="0.8" fill="black">
       P
     </text>
-    <text x="3.4" y="-0.6" transform="scale(1, -1)" font-size="0.4" font-family="Ubuntu Mono" fill="black">
+    <text x="3.4" y="-0.6" transform="scale(1, -1)" font-size="0.4" fill="black">
       b
     </text>
   </g>

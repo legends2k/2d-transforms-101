@@ -39,11 +39,11 @@
       <animate attributeName="cx" to="6" begin="accessKey(1)" dur="1s" fill="freeze" />
       <set attributeName="cx" to="1" begin="Reset.begin" dur="0s" fill="freeze" />
     </circle>
-    <text x="3" y="1" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">6
+    <text x="3" y="1" transform="scale(1, -1)" font-size="1.2" visibility="hidden">6
       <set attributeName="visibility" to="visible" begin="accessKey(1)" dur="0s" fill="freeze" />
       <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
     </text>
-    <text x="-1" y="0" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono">
+    <text x="-1" y="0" transform="scale(1, -1)" font-size="1.2">
       ₹
     </text>
     <g visibility="hidden">
@@ -57,7 +57,7 @@
             marker-end="url(#redArrow)"
             stroke="red"
             stroke-width="0.1" />
-      <text x="-1" y="-2" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono">
+      <text x="-1" y="-2" transform="scale(1, -1)" font-size="1.2">
         $
       </text>
     </g>

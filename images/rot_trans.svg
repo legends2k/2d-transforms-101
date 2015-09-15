@@ -31,12 +31,12 @@
       <animateTransform id="BtoC" attributeName="transform" additive="sum" type="translate" from="0, 0" to="6.3639, -6.3639" begin="accessKey(2)" dur="1s" fill="freeze" />
       <animateTransform id="ResetT" attributeName="transform" type="translate" to="0, 0" begin="accessKey(r)" dur="0s" fill="freeze" />
       <animateTransform id="ResetR" attributeName="transform" type="rotate" to="0" begin="accessKey(r)" dur="0s" fill="freeze" />    </rect>
-      <text x="2.2" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+      <text x="2.2" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.begin" dur="0.1s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetR.begin" dur="0.1s" fill="freeze" />
         R₄₅
       </text>
-      <text x="4.3" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+      <text x="4.3" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="BtoC.begin" dur="0.1s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetT.begin" dur="0.1s" fill="freeze" />
         T₉,₀

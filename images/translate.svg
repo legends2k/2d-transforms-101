@@ -31,37 +31,37 @@
     </rect>
 
     <!-- point labels for square before xform -->
-    <text x="2.2" y="-2" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono">(2, 2)
+    <text x="2.2" y="-2" transform="scale(1, -1)" font-size="0.6">(2, 2)
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="AtoB.begin" />
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="BtoA.end" />
     </text>
-    <text x="-4.2" y="-2" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono">(-2, 2)
+    <text x="-4.2" y="-2" transform="scale(1, -1)" font-size="0.6">(-2, 2)
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="AtoB.begin" />
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="BtoA.end" />
     </text>
-    <text x="-4.5" y="2" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono">(-2, -2)
+    <text x="-4.5" y="2" transform="scale(1, -1)" font-size="0.6">(-2, -2)
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="AtoB.begin" />
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="BtoA.end" />
     </text>
-    <text x="2.2" y="2" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono">(2, -2)
+    <text x="2.2" y="2" transform="scale(1, -1)" font-size="0.6">(2, -2)
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="AtoB.begin" />
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="BtoA.end" />
     </text>
 
     <!-- point labels for square after xform -->
-    <text x="5.2" y="-6" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono" visibility="hidden">(5, 6)
+    <text x="5.2" y="-6.25" transform="scale(1, -1)" font-size="0.6" visibility="hidden">(5, 6)
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="AtoB.end" />
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="BtoA.begin" />
     </text>
-    <text x="-1" y="-6" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono" visibility="hidden">(1, 6)
+    <text x="0.1" y="-6.25" transform="scale(1, -1)" font-size="0.6" visibility="hidden">(1, 6)
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="AtoB.end" />
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="BtoA.begin" />
     </text>
-    <text x="-1" y="-2" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono" visibility="hidden">(1, 2)
+    <text x="0.1" y="-1.25" transform="scale(1, -1)" font-size="0.6" visibility="hidden">(1, 2)
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="AtoB.end" />
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="BtoA.begin" />
     </text>
-    <text x="5.2" y="-2" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono" visibility="hidden">(5, 2)
+    <text x="5.2" y="-1.25" transform="scale(1, -1)" font-size="0.6" visibility="hidden">(5, 2)
       <set attributeType="CSS" attributeName="visibility" to="visible" begin="AtoB.end" />
       <set attributeType="CSS" attributeName="visibility" to="hidden" begin="BtoA.begin" />
     </text>

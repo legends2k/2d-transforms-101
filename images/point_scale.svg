@@ -55,7 +55,7 @@
       <animate id="ResetX" attributeName="cx" to="1" dur="0.5s" fill="freeze" begin="accessKey(r)" />
       <animate id="ResetY" attributeName="cy" to="1" dur="0.5s" fill="freeze" begin="ResetX.begin" />
     </circle>
-    <text x="3" y="-3" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="3" y="-3" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetX.begin" dur="0s" fill="freeze" />
       S₂,₂

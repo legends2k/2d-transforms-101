@@ -85,10 +85,10 @@
             stroke-width="0.1" />
       <circle cx="1" cy="1" r="0.15" fill="red" />
     </g>
-    <text x="-1" y="-1" font-size="0.8" font-family="Ubuntu Mono">Street</text>
-    <text x="-1" y="13" font-size="0.8" font-family="Ubuntu Mono" fill="blue">House</text>
-    <text x="3" y="3.75" font-size="0.8" font-family="Ubuntu Mono" fill="green">Kids Room</text>
-    <text x="5.5" y="9" font-size="0.8" font-family="Ubuntu Mono" fill="red">Boy</text>
+    <text x="-1" y="-1" font-size="0.8">Street</text>
+    <text x="-1" y="13" font-size="0.8" fill="blue">House</text>
+    <text x="3" y="3.75" font-size="0.8" fill="green">Kids Room</text>
+    <text x="5.5" y="9" font-size="0.8" fill="red">Boy</text>
   </g>
 </svg>
 

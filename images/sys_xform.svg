@@ -72,7 +72,7 @@
             stroke-width="0.1">
       </line>
     </g>
-    <text x="5" y="-9" transform="scale(1, -1)" font-size="0.8" font-family="Ubuntu Mono" visibility="visible">X
+    <text x="5" y="-9" transform="scale(1, -1)" font-size="0.8" visibility="visible">X
         <set attributeName="y" to="-8" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="y" to="-5" begin="BtoC.end" dur="0s" fill="freeze" />
         <set attributeName="x" to="6" begin="BtoC.end" dur="0s" fill="freeze" />
@@ -83,7 +83,7 @@
         <set attributeName="y" to="-9" begin="ResetR.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="visible" begin="ResetS.end" dur="0s" fill="freeze" />
     </text>
-    <text x="8" y="-6" transform="scale(1, -1)" font-size="0.8" font-family="Ubuntu Mono" visibility="visible">Y
+    <text x="8" y="-6" transform="scale(1, -1)" font-size="0.8" visibility="visible">Y
         <set attributeName="x" to="7" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="y" to="-7" begin="BtoC.end" dur="0s" fill="freeze" />
         <set attributeName="x" to="5.5" begin="CtoD.end" dur="0s" fill="freeze" />
@@ -93,27 +93,27 @@
         <set attributeName="y" to="-6" begin="ResetR.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="visible" begin="ResetS.end" dur="0s" fill="freeze" />
     </text>
-    <text x="0.5" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="0.5" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="DtoE.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetT.begin" dur="0s" fill="freeze" />
         T₋₆,₋₇
     </text>
-    <text x="4.2" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="4.2" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="CtoD.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetR.begin" dur="0s" fill="freeze" />
       R₉₀
     </text>
-    <text x="6.2" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="6.2" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="BtoC.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetS.begin" dur="0s" fill="freeze" />
       S₋₁,₁
     </text>
-    <text x="9.1" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="9.1" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetS.begin" dur="0s" fill="freeze" />
       S
     </text>
-    <text x="9.8" y="-10" transform="scale(1, -1)" font-size="0.6" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="9.8" y="-10" transform="scale(1, -1)" font-size="0.6" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetS.begin" dur="0s" fill="freeze" />
       ½,½

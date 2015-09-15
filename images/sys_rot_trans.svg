@@ -99,12 +99,12 @@
       <set attributeName="visibility" to="visible" begin="BtoC.begin" dur="0s" fill="freeze" />
       <set attributeName="visibility" to="hidden" begin="ResetT.begin" dur="0s" fill="freeze" />
     </g>
-    <text x="2.2" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="2.2" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="BtoC.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetT.begin" dur="0s" fill="freeze" />
       T₉,₀
     </text>
-    <text x="5.3" y="-10" transform="scale(1, -1)" font-size="1.2" font-family="Ubuntu Mono" visibility="hidden">
+    <text x="5.3" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
         <set attributeName="visibility" to="visible" begin="AtoB.end" dur="0s" fill="freeze" />
         <set attributeName="visibility" to="hidden" begin="ResetR.begin" dur="0s" fill="freeze" />
       R₄₅

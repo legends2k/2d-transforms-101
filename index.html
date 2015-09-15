@@ -46,7 +46,7 @@
 					  <small><a href="http://stackoverflow.com/users/183120/legends2k">Sundaram Ramaswamy</a> / <a href="mailto:legends2k@yahoo.com">@legends2k</a></small>
 					</p>
                     <p style="font-size: 50%">
-                      <small><a href="http://github.com/legends2k/2D-transforms-101#2d-transforms-101">Read me</a> first! Press <code>?</code> for animation control shortcuts.</small><br />
+                      <small><a href="http://github.com/legends2k/2d-transforms-101#2d-transforms-101">Read me</a> first! Press <code>?</code> for animation control shortcuts.</small><br />
                       <small>This presentation has animated SVGs best viewed in <a href="http://www.firefox.com/">Firefox.</a></small>
                     </p>
 				</section>
@@ -105,7 +105,7 @@
                     <li class="fragment" data-fragment-index="3">Default rotation is counter-clockwise
                       <small>
                         <ul>
-                          <li class="fragment" data-fragment-index="4">Rotates a point ↺ (counter-clockwise) when θ > 0, ⟳ (clockwise) when θ < 0</li>
+                          <li class="fragment" data-fragment-index="4">Rotates a point ↶ (counter-clockwise) when θ > 0, ↷ (clockwise) when θ < 0</li>
                           <li class="fragment" data-fragment-index="5">Degrees despite most library functions expecting radians: π rad = 180°</li>
                         </ul>
                       </small>
@@ -204,9 +204,9 @@
                       <object class="fragment" data-fragment-index="0" type="image/svg+xml" data="images/nonuniform_scale.svg" style="float: right; width: 50%;"></object>
                       <div class="fragment" data-fragment-index="1">
                         $Square = \{ P_{1}, P_{2}, P_{3}, P_{4} \} \\
-                        Scale = (2, ½)\\
+                        Scale = (2, \frac{1}{2})\\
                         \begin{array}{l|l}
-                        P & P' = PS_{2, ½}\\ \hline
+                        P & P' = PS_{2, \frac{1}{2}}\\ \hline
                         (2, 2) & (4, 1)\\
                         (-2, 2) & (-4, 1)\\
                         (-2, -2) & (-4, -1)\\
@@ -216,7 +216,7 @@
                       </div>
                   </div><br />
                   <div style="float: centre" class="fragment" data-fragment-index="3">
-                    $S_{2, ½}$ is a shape-changing transformation — deformation.
+                    $S_{2, \frac{1}{2}}$ is a shape-changing transformation — deformation.
                   </div>
                 </section>
 
@@ -739,8 +739,8 @@
                     <div style="text-align: left">
                       <span class="fragment" data-fragment-index="1">$M_{b \rightarrow s}$ = </span><span class="fragment" data-fragment-index="2">$L_{s \rightarrow b}$</span><br />
                       <span class="fragment" data-fragment-index="3">$L_{s \rightarrow b}$ = </span><span class="fragment" data-fragment-index="6">$L_{k \rightarrow b}~$</span><span class="fragment" data-fragment-index="5">$L_{h \rightarrow k}~$</span><span class="fragment" data-fragment-index="4">$L_{s \rightarrow h}$</span></br>
-                      <span class="fragment" data-fragment-index="7">$L_{s \rightarrow h}$ = </span><span class="fragment" data-fragment-index="10">$T_{0, -6}~$</span><span class="fragment" data-fragment-index="9">$S_{1, -1}~$</span><span class="fragment" data-fragment-index="8">$S_{⅔, ⅔}$</span><br />
-                      <span class="fragment" data-fragment-index="11">$L_{h \rightarrow k}$ = </span><span class="fragment" data-fragment-index="14">$R_{-90}~$</span><span class="fragment" data-fragment-index="13">$S_{½, ½}~$</span><span class="fragment" data-fragment-index="12">$T_{2, 4}$</span><br />
+                      <span class="fragment" data-fragment-index="7">$L_{s \rightarrow h}$ = </span><span class="fragment" data-fragment-index="10">$T_{0, -6}~$</span><span class="fragment" data-fragment-index="9">$S_{1, -1}~$</span><span class="fragment" data-fragment-index="8">$S_{\frac{2}{3}, \frac{2}{3}}$</span><br />
+                      <span class="fragment" data-fragment-index="11">$L_{h \rightarrow k}$ = </span><span class="fragment" data-fragment-index="14">$R_{-90}~$</span><span class="fragment" data-fragment-index="13">$S_{\frac{1}{2}, \frac{1}{2}}~$</span><span class="fragment" data-fragment-index="12">$T_{2, 4}$</span><br />
                       <span class="fragment" data-fragment-index="15">$L_{k \rightarrow b}$ = </span><span class="fragment" data-fragment-index="17">$R_{135}~$</span><span class="fragment" data-fragment-index="16">$T_{4, 2}$</span><br /><br />
                       <small>
                         <span class="fragment" data-fragment-index="18">$M_{b \rightarrow s} = \begin{pmatrix}0.2357 & -0.2357 & 0\\-0.2357 & -0.2357 & 0\\2 & 2.6667 & 1\end{pmatrix}$</span>
