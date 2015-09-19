@@ -1,46 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      width="6in" height="6in" viewBox="0 0 16 16" style="background-color: Cornsilk">"
-  <defs>
-    <pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
-      <path d="M 1 0 L 0 0 0 1" fill="none" stroke="blue" stroke-width="0.05"/>
-    </pattern>
-    <marker id="arrow"
-            viewBox="0 0 10 10" refX="8.5" refY="5" 
-            markerUnits="strokeWidth"
-            markerWidth="6" markerHeight="4.5"
-            orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" />
-    </marker>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#grid)" />
-  <g transform="translate(3, 13) scale(1, -1)">
-    <line x1="-3" y1="0" x2="13" y2="0"
-          marker-end="url(#arrow)"
-          stroke="black"
-          stroke-width="0.1" />
-    <line x1="0" y1="-3" x2="0" y2="13"
-          marker-end="url(#arrow)"
-          stroke="black"
-          stroke-width="0.1" />
-    <rect x="-2" y="-2" width="4" height="4"
-          stroke-width="2.5"
-          vector-effect="non-scaling-stroke"
-          stroke="#009900" fill="yellow" style="fill-opacity: 0.5;">
-          <!-- R45 T9,0 -->
-      <animateTransform id="AtoB" attributeName="transform" additive="sum" type="rotate" from="0" to="45" begin="accessKey(1)" dur="1s" fill="freeze" />
-      <animateTransform id="BtoC" attributeName="transform" additive="sum" type="translate" from="0, 0" to="6.3639, -6.3639" begin="accessKey(2)" dur="1s" fill="freeze" />
-      <animateTransform id="ResetT" attributeName="transform" type="translate" to="0, 0" begin="accessKey(r)" dur="0s" fill="freeze" />
-      <animateTransform id="ResetR" attributeName="transform" type="rotate" to="0" begin="accessKey(r)" dur="0s" fill="freeze" />    </rect>
-      <text x="2.2" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
-        <set attributeName="visibility" to="visible" begin="AtoB.begin" dur="0.1s" fill="freeze" />
-        <set attributeName="visibility" to="hidden" begin="ResetR.begin" dur="0.1s" fill="freeze" />
-        R₄₅
-      </text>
-      <text x="4.3" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
-        <set attributeName="visibility" to="visible" begin="BtoC.begin" dur="0.1s" fill="freeze" />
-        <set attributeName="visibility" to="hidden" begin="ResetT.begin" dur="0.1s" fill="freeze" />
-        T₉,₀
-      </text>
-  </g>
+    <defs>
+        <pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
+            <path d="M 1 0 L 0 0 0 1" fill="none" stroke="blue" stroke-width="0.05"/>
+        </pattern>
+        <marker id="arrow"
+                viewBox="0 0 10 10" refX="8.5" refY="5"
+                markerUnits="strokeWidth"
+                markerWidth="6" markerHeight="4.5"
+                orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" />
+        </marker>
+    </defs>
+    <g onclick="anim()">
+        <script type="application/ecmascript"> <![CDATA[
+            var nextAnim = "AtoB";
+            function setNextAnim(id) {
+                nextAnim = id;
+            }
+            function anim() {
+                document.getElementById(nextAnim).beginElement();
+            }
+         ]]> </script>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+        <g transform="translate(3, 13) scale(1, -1)">
+            <line x1="-3" y1="0" x2="13" y2="0"
+                  marker-end="url(#arrow)"
+                  stroke="black"
+                  stroke-width="0.1" />
+            <line x1="0" y1="-3" x2="0" y2="13"
+                  marker-end="url(#arrow)"
+                  stroke="black"
+                  stroke-width="0.1" />
+            <rect x="-2" y="-2" width="4" height="4"
+                  stroke-width="2.5"
+                  vector-effect="non-scaling-stroke"
+                  stroke="#009900" fill="yellow" style="fill-opacity: 0.5;">
+                <!-- R45 T9,0 -->
+                <animateTransform id="AtoB" attributeName="transform" additive="sum" type="rotate" from="0" to="45" begin="indefinite" dur="1s" fill="freeze" onend="setNextAnim('BtoC')" />
+                <animateTransform id="BtoC" attributeName="transform" additive="sum" type="translate" from="0, 0" to="6.3639, -6.3639" begin="indefinite" dur="1s" fill="freeze" onend="setNextAnim('ResetT')" />
+                <animateTransform id="ResetT" attributeName="transform" type="translate" to="0, 0" begin="indefinite" dur="0s" fill="freeze" onend="setNextAnim('AtoB')" />
+                <animateTransform id="ResetR" attributeName="transform" type="rotate" to="0" begin="ResetT.end" dur="0s" fill="freeze" />    </rect>
+                <text x="2.2" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
+                    <set attributeName="visibility" to="visible" begin="AtoB.begin" dur="0.1s" fill="freeze" />
+                    <set attributeName="visibility" to="hidden" begin="ResetR.begin" dur="0.1s" fill="freeze" />
+                    R₄₅
+                </text>
+                <text x="4.3" y="-10" transform="scale(1, -1)" font-size="1.2" visibility="hidden">
+                    <set attributeName="visibility" to="visible" begin="BtoC.begin" dur="0.1s" fill="freeze" />
+                    <set attributeName="visibility" to="hidden" begin="ResetT.begin" dur="0.1s" fill="freeze" />
+                    T₉,₀
+                </text>
+        </g>
+    </g>
 </svg>
-

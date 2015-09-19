@@ -222,9 +222,7 @@
 			'B  ,  .':				'Pause',
 			'F':					'Fullscreen',
 			'ESC, O':				'Slide overview',
-            'Click SVG image':      'Focus animation for below shortcuts to work',
-            '1, 2, …':              'Animation next frame',
-            'r':                    'Animation reset'
+            'Click Graph Paper':    'Animate to next key frame'
 		};
 
 	/**
