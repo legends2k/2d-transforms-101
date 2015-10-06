@@ -1,5 +1,5 @@
 # 2D Transforms 101
-A presentation/tutorial on 2D transforms for programmers and practitioners favouring intuition over mathematical rigour; animations are used to illustrate the effect of every transform explained. [View it directly in your browser!](http://legends2k.github.io/2d-transforms-101/#/) Press `?` while in the presentation for controls and `Esc` for an overview and quick navigation. Comments and suggestions are [welcome](mailto:legends2k@yahoo.com).
+A presentation/tutorial on 2D transforms for programmers and practitioners favouring intuition over mathematical rigour; animations are used to illustrate the effect of every transform explained. [View it directly in your browser!](http://legends2k.github.io/2d-transforms-101/#/) [Firefox](http://www.firefox.com/), [Chrome](http://www.google.com/chrome/index.html) or [Opera](http://www.opera.com/) recommended as they support animations; see [Requirements](http://github.com/legends2k/2d-transforms-101/#requirements) for details. Press `?` while in the presentation for controls and `Esc` for an overview and quick navigation. Comments and suggestions are [welcome](mailto:legends2k@yahoo.com).
 
 Transformations are a general mathematical concept that is applicable to anyone working in:
 
@@ -29,7 +29,7 @@ Instead of dealing with only elementary transforms (rotate, scale, translate) on
 * Hierarchical Transforms
 
 ## Requirements
-The presentation was hand-crafted using HTML5, CSS3, JavaScript and SVG; so nothing more than a browser is required to view the presentation. [Firefox](http://www.firefox.com/), [Chrome](http://www.google.com/chrome/index.html) or [Opera](http://www.opera.com/), even if you've an older version, is highly recommended since support for SVG animations isn't that great in other browsers; with browsers like Safari, Edge or IE you will not be able to see these animations — [caveat lector](http://en.wiktionary.org/wiki/caveat_lector).
+The presentation was hand-crafted using HTML5, CSS3, JavaScript and SVG; so nothing more than a browser is required to view the presentation. Firefox, Chrome or Opera, even if you've an older version, is highly recommended since support for SVG animations isn't that great in other browsers; with browsers like Safari, Edge or IE you will not be able to see these animations — [caveat lector](http://en.wiktionary.org/wiki/caveat_lector).
 
 You can also view the presentation on a mobile or a tablet; the content, without any loss of fidelity, should get resized and fit to given form factor, thanks to [vector graphics](http://en.wikipedia.org/wiki/Vector_image_format) and CSS3. Touch (tap and swipe left/right) is supported both for navigation and animation control.
 
