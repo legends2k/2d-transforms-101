@@ -19,7 +19,7 @@ Concepts discussed are dimension-indepedant; it's just easier to explain and vis
 Instead of dealing with only elementary transforms (rotate, scale, translate) on points, which most resources do, it also covers:
 
 * Basic math behind transforms (without matrices)
-    + Matrices, introduced past the basics since they're just tools
+    + Matrix introduced past the basics since it's just a tool
 * Composite transforms — concatenation of multiple transforms
     + Anti-commutativity
     + Transforms about an arbitrary origin
@@ -44,7 +44,7 @@ The solution to problem of mapping the boy space to street space that is posed a
 ## SVG
 The demonstrations/interactive animations embedded within the presentation was done in [SVG](http://en.wikipedia.org/wiki/Scalable_Vector_Graphics), the XML-based, open standard file format for vector graphics with support for animation. In English, all it has are just instructions like `move to`, `line to`, `rect`, `circle`, `ellipse`, etc. in a very readable, XML format and no unintelligible binary data. So a reader (yes, a human one too) can easily read and understand it; a renderer can render it at any resolution without any loss in fidelity. The presentation's first slide has a [3D-transformed background](http://rawgit.com/legends2k/2d-transforms-101/gh-pages/images/2D_affine_xforms.svg) which too is an SVG — it should show up as something similar to [this](http://rawgit.com/legends2k/2d-transforms-101/gh-pages/images/background.png); a simple check to see how well your browser supports SVGs and CSS3 transforms.
 
-It's highly recommended that you fiddle with the SVGs under [`images`](https://github.com/legends2k/2d-transforms-101/tree/gh-pages/images) directory. SVG format is very similar to [PostScript](http://en.wikipedia.org/wiki/PostScript) (which also has commands like `move to`, `line to`, etc.) and is an excellent `Hello World` test bed ([Short, Self Contained, Correct, Example](http://www.sscce.org/)) for learning transformations or 2D graphics in general. Oh they also have a tag for groupings `<g>` which may be used to learn hierarchical transformations. An SVG is only more readable than a PS, PDF or [XAML](http://msdn.microsoft.com/en-us/library/windows/apps/dn535793.aspx). Just open it in a (modern) browser to view it (no, not Edge, it doesn't do 3D CSS3 transforms in SVGs yet :), open it in your favourite text editor, muck around, save and refresh your browser to see the changes immediately; rinse and repeat.
+It's highly recommended that you fiddle with the SVGs under [`images`](https://github.com/legends2k/2d-transforms-101/tree/gh-pages/images) directory. SVG format is very similar to [PostScript](http://en.wikipedia.org/wiki/PostScript) (which also has commands like `move to`, `line to`, etc.) and is an excellent `Hello World` test bed ([Short, Self Contained, Correct, Example](http://www.sscce.org/)) for learning transformations or 2D graphics in general. Oh they also have a tag for groupings `<g>` which may be used to learn hierarchical transformations. An SVG is only more readable than a PS, PDF or [XAML](http://msdn.microsoft.com/en-us/library/windows/apps/dn535793.aspx). Just open it in a (modern) browser to view it, open it in your favourite text editor, muck around, save and refresh your browser to see the changes immediately; rinse and repeat.
 
 ## Credits
 * [Computer Graphics using OpenGL](http://amzn.com/0131496700), _Francis Hill_ and _Stephen Kelley_
