@@ -136,7 +136,7 @@
                                     <small>Creation of shapes (or rather plotting of points) is beyond purview</small>
                                 </li>
                                 <li class="fragment" data-fragment-index="1">Transforming a shape really means transforming its points individually
-                                    <small>Despite the naming of transform types (scale, rotate, shear, …) imply operation on a shape, a transform can only operate on a single point</small>
+                                    <small>Although transformation types (scale, rotate, shear, …) imply operation on a shape, a transform can only operate on a single point</small>
                                 </li>
                                 <!-- <small> -->
                                 <!--   <blockquote style="text-align:justify; width:90%; float:none" class="fragment">Every attempt to describe a position requires that we describe it relative to something else. Any description of a position is meaningful only in the context of some (typically “larger”) reference frame. Theoretically, we could establish a reference frame encompassing everything in existence and select a point to be the “origin” of this space, thus defining the “absolute” coordinate space. However, even if such an absolute coordinate space were possible, it would not be practical.<br />— 3D Math Primer, 2<sup>nd</sup> Edition -->
@@ -631,7 +631,7 @@
                         <li class="fragment" data-fragment-index="4">Point transforms are concatenated by post-multiplying<br />$P' = P$<span class="fragment" data-fragment-index="5">$X_1$</span><span class="fragment" data-fragment-index="6">$X_2$</span><span class="fragment" data-fragment-index="7">$X_3$</span></li>
                         <li class="fragment" data-fragment-index="8">System transforms are concatenated by pre-multiplying<br />$L_{a \rightarrow b} = $<span class="fragment" data-fragment-index="11">$X_3$</span> <span class="fragment" data-fragment-index="10">$X_2$</span><span class="fragment" data-fragment-index="9"> $X_1$</span></li>
                         <li class="fragment" data-fragment-index="12">Since the order of multiplication is reversed result would be different (anti-commutativity)</li>
-                        <li class="fragment" data-fragment-index="13">Reason for same result is we transformed in reverse order<br />
+                        <li class="fragment" data-fragment-index="13">Reason for the same result in previous exercise is we transformed in reverse order<br />
                             <small class="fragment" data-fragment-index="14">Reverse order and pre-multiply → same order <span class="fragment" data-fragment-index="15">(¬¬x = x)</span></small></li>
                     </ul>
                     <aside class="notes">
@@ -719,8 +719,9 @@
                         <li class="fragment" data-fragment-index="3">$\boxed{M_{a \rightarrow c} = M_{a \rightarrow b} M_{b \rightarrow c}}$
                             <small style="vertical-align: baseline"><i class="fragment" data-fragment-index="4">(order, of course, matters)</i></small>
                         </li>
-                        <li class="fragment" data-fragment-index="6">$L_{c \rightarrow a} = ~$<span class="fragment" data-fragment-index="8">$L_{b \rightarrow a}~$</span> <span class="fragment" data-fragment-index="7">$L_{c \rightarrow b}$</span></li><br />
+                        <li class="fragment" data-fragment-index="6">$L_{c \rightarrow a} = ~$<span class="fragment" data-fragment-index="8">$L_{b \rightarrow a}~$</span> <span class="fragment" data-fragment-index="7">$L_{c \rightarrow b}$</span></li>
                         <small class="fragment" data-fragment-index="5">∵ $M_{a \rightarrow b} = L_{b \rightarrow a}$</small>
+                        <li class="fragment" data-fragment-index="9">To find the mapping from system A to C, finding the matrix which transforms system C to A will do.</li>
                     </ul>
                     <aside class="notes">
                         Robotics example of mapping from world to finger space.<br />
