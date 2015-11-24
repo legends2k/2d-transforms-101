@@ -1,5 +1,9 @@
 # 2D Transforms 101
-A presentation/tutorial on 2D transforms for programmers and practitioners favouring intuition over mathematical rigour; animations are used to illustrate the effect of every transform explained. [View it directly in your browser!](http://legends2k.github.io/2d-transforms-101/#/) [Firefox](http://www.firefox.com/), [Chrome](http://www.google.com/chrome/index.html) or [Opera](http://www.opera.com/) recommended as they support animations; see [Requirements](http://github.com/legends2k/2d-transforms-101/#requirements) for details. Press `?` while in the presentation for controls and `Esc` for an overview and quick navigation. Comments and suggestions are [welcome](mailto:legends2k@yahoo.com).
+A presentation/tutorial on 2D transforms for programmers and practitioners favouring intuition over mathematical rigour; animations are used to illustrate the effect of every transform explained.
+
+[View it directly in your browser!](http://legends2k.github.io/2d-transforms-101/#/)
+
+[Firefox](http://www.firefox.com/), [Chrome](http://www.google.com/chrome/index.html) or [Opera](http://www.opera.com/) recommended as they support animations; see [Requirements](http://github.com/legends2k/2d-transforms-101/#requirements) for details. Press `?` while in the presentation for controls and `Esc` for an overview and quick navigation. Comments and suggestions are [welcome](mailto:legends2k@yahoo.com).
 
 Transformations are a general mathematical concept that is applicable to anyone working in:
 
