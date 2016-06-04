@@ -222,7 +222,8 @@
 			'B  ,  .':				'Pause',
 			'F':					'Fullscreen',
 			'ESC, O':				'Slide overview',
-            'Click Graph Paper':    'Animate to next key frame'
+            'Click graph paper':    'Animate to next key frame',
+            'Click elsewhere':      'Return focus to slide deck'
 		};
 
 	/**

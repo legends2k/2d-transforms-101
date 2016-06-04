@@ -121,7 +121,8 @@
                             </small>
                         </li>
                         <li class="fragment" data-fragment-index="10">
-                            Using column-vector convention? Transpose all matrices and reverse the order of multiplication: $(AB)^{T} = B^T A^T$
+                            Using column-vector convention? Transpose all equations shown<br />
+                            <small class="fragment" data-fragment-index="11">Flip matrices and reverse multiplication order as $(AB)^{T} = B^T A^T$ &nbsp; e.g.<br /> $\begin{pmatrix}x & y\end{pmatrix}\begin{pmatrix}a & b \\c & d\end{pmatrix} = \begin{pmatrix}a & c \\b & d\end{pmatrix} \begin{pmatrix}x \\ y\end{pmatrix}$</small>
                         </li>
                     </ul>
                 </section>
@@ -133,10 +134,10 @@
                         <div style="float: left; width: 65%">
                             <ul>
                                 <li class="fragment" data-fragment-index="0">Transformations act on points already existing
-                                    <small>Creation of shapes (or rather plotting of points) is beyond purview</small>
+                                    <small>Creation of shapes (and plotting of points) is beyond purview</small>
                                 </li>
                                 <li class="fragment" data-fragment-index="1">Transforming a shape really means transforming its points individually
-                                    <small>Although transformation types (scale, rotate, shear, …) imply operation on a shape, a transform can only operate on a single point</small>
+                                    <small>Though transformation types (scale, rotate, shear, …) imply operation on a shape, a transform can only operate on a single point</small>
                                 </li>
                                 <!-- <small> -->
                                 <!--   <blockquote style="text-align:justify; width:90%; float:none" class="fragment">Every attempt to describe a position requires that we describe it relative to something else. Any description of a position is meaningful only in the context of some (typically “larger”) reference frame. Theoretically, we could establish a reference frame encompassing everything in existence and select a point to be the “origin” of this space, thus defining the “absolute” coordinate space. However, even if such an absolute coordinate space were possible, it would not be practical.<br />— 3D Math Primer, 2<sup>nd</sup> Edition -->
@@ -145,9 +146,9 @@
                                 <li class="fragment" data-fragment-index="2">A <i>system/space</i> within which values (points) lives has
                                     <small>
                                         <ul>
-                                            <li class="fragment" data-fragment-index="3">to be relative, no such <i>thing</i> as “absolute system”</li>
+                                            <li class="fragment" data-fragment-index="3">to be relative; no such <i>thing</i> as “absolute system”</li>
                                             <li class="fragment" data-fragment-index="5">an agreed-upon origin w.r.t another system</li>
-                                            <li class="fragment" data-fragment-index="6">$n$ lengths agreed-upon as 1 unit in every direction considered w.r.t another system</li>
+                                            <li class="fragment" data-fragment-index="6">$n$ lengths agreed-upon as 1 unit in every direction (axes) considered w.r.t another system</li>
                                         </ul>
                                     </small>
                                 </li>
@@ -158,7 +159,7 @@
 
                 <section>
                     <h1>Part I</h1>
-                    <h2>Transforms</h2>
+                    <h2>Transforming Points</h2>
                     <blockquote class="fragment">Changes made to a value within a system</blockquote>
                     <p class="fragment">$X: P \rightarrow P'$</p>
                 </section>
@@ -169,14 +170,14 @@
                         <li class="fragment" data-fragment-index="1">1D scaling is so ingrained we do it without forethought</li>
                         <small>
                             <span class="fragment" data-fragment-index="0">1 ticket = ₹50 ⇒ 3 tickets = 3 × 50 = ₹150</span>
-                            <span class="fragment" data-fragment-index="3"> — here $x = 50, s = 3$</span>
+                            <span class="fragment" data-fragment-index="4"> — here $x = 50, s = 3$</span>
                         </small>
-                        <li class="fragment" data-fragment-index="2">Multiplying the value $x$, with the scaling factor $s$ <i>(scalar)</i>, does the conversion $\boxed{x' = s x}$.
-                            <small>Enlarges if $s > 1$; shrinks if $0 < s < 1$; does no conversion when $s = 1$ (identity)</small></li>
-                        <li class="fragment" data-fragment-index="4">Same formula works in 2D; use another scalar to tackle the extra dimension: $S_{x, y} = (s_{x}, s_{y})$</li>
-                        <li class="fragment" data-fragment-index="5">For some $P(x, y)$ and $S_{x, y}$, the scaled <i>(transformed)</i> point
+                        <li class="fragment" data-fragment-index="2">Multiplying the value $x$, with the scaling factor $s$ <i>(scalar)</i>, does the conversion $\boxed{x' = s x}$.</li>
+                            <small class="fragment" data-fragment-index="3">Enlarges if $s > 1$; shrinks if $0 < s < 1$; does no conversion when $s = 1$ (identity)</small>
+                        <li class="fragment" data-fragment-index="5">Same formula works in 2D; use another scalar to tackle the extra dimension: $S_{x, y} = (s_{x}, s_{y})$</li>
+                        <li class="fragment" data-fragment-index="6">For some $P(x, y)$ and $S_{x, y}$, the scaled, or more generally <i>transformed</i>, point
                             $\boxed{P'(x', y') = PS_{x, y} = (s_{x}x, s_{y}y)}$</li>
-                        <li class="fragment" data-fragment-index="6">Scaling is uniform when $s_{x} = s_{y}$</li>
+                        <li class="fragment" data-fragment-index="7">Scaling is uniform when $s_{x} = s_{y}$</li>
                     </ul>
                 </section>
 
@@ -255,10 +256,10 @@
                         <li class="fragment">No conversion (identity) when $θ = 0$
                             <small><span class="fragment"> ∵ cos 0 = 1, sin 0 = 0 </span><span class="fragment"> → $PR_{0} = (1x - 0y, 0x + 1y) = (x, y) = P' = P$</span></small>
                         </li>
-                        <li class="fragment">Negative angles can be made positive by adding 360
-                            <small><span class="fragment">θ = −90, θ = 360 − 90 = 270</span><span class="fragment"> — works since the resulting orientation is the same; doesn't work when animating</span></small>
-                        </li>
                         <li class="fragment">These functions are periodic ⇒ $θ = θ \bmod 360$ (angle <i>wraps around</i>)</li>
+                        <li class="fragment">Negative angles can be made positive by adding 360
+                            <small><span class="fragment">θ = −90, θ = 360 − 90 = 270</span><span class="fragment"> — works since the resulting orientation is the same; doesn't work when animating as the direction of rotation will change</span></small>
+                        </li>
                     </ul>
                 </section>
 
@@ -368,7 +369,7 @@
                             (2, -2) & (5, 2)
                             \end{array}$
                             <br /><br />
-                            <small class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is the same square.</small>
+                            <small class="fragment" data-fragment-index="2">Square' $\{ P'_{1}, P'_{2}, P'_{3}, P'_{4} \}$ is $P$ relocated.</small>
                         </div><br />
                         <span class="fragment" data-fragment-index="3">$T_{3, 4}$ is a rigid-body transform that repositions an object.</span>
                     </div>
@@ -400,7 +401,7 @@
                 </section>
 
                 <section>
-                    <h2>Concatenating transforms</h2>
+                    <h2>Concatenating Transforms</h2>
                     <ul>
                         <li class="fragment">Multiple transforms may be concatenated</li>
                         <li class="fragment">Consider X₁, X₂, X₃ concatenated in that order: $P'(x', y') = PX_1X_2X_3$</li>
@@ -470,14 +471,16 @@
                 <section>
                     <h2>Matrices Don't Commute</h2>
                     <ul>
-                        <li class="fragment"><i>You mean, they don't go to office!?</i>
-                            <li class="fragment"><i>No, silly!</i> The order of matrix multiplication matters</li>
-                            <li class="fragment">AB ≠ BA</li>
-                            <li class="fragment">This is unlike scalar multiplication …<br />
-                                <small>3 * 4 = 4 * 3</small></li>
-                            <li class="fragment">… but similar to scalar subtraction<br />
-                                <small>3 − 4 ≠ 4 − 3</small></li>
-                            <li class="fragment">Being mindful of anti-commutativity is important</li>
+                        <li class="fragment"><i>You mean, they don't go to office!?</i></li>
+                        <li class="fragment"><i>No, silly!</i> The order of matrix multiplication matters</li>
+                        <li class="fragment">AB ≠ BA</li>
+                        <li class="fragment">This is unlike scalar multiplication …<br />
+                            <small>3 * 4 = 4 * 3</small></li>
+                        <li class="fragment">… but similar to scalar subtraction<br />
+                            <small>3 − 4 ≠ 4 − 3</small></li>
+                        <li class="fragment">Being mindful of anti-commutativity is important</li>
+                        <li class="fragment">Successive point transforms are concatenated to the right i.e. they are post-multiplied e.g. $X_1 X_2 … X_n$</li>
+                        <small class="fragment">Post-multiplication is sometimes called right multiplication</small>
                     </ul>
                 </section>
 
@@ -589,16 +592,17 @@
                 </section>
 
                 <section>
-                    <h2>Redefining A System</h2>
+                    <h2>Transforming A System</h2>
                     <ul>
-                        <li class="fragment">A system is defined by its origin and unit distances in all considered directions w.r.t another system</li>
-                        <li class="fragment">Transforming a system is just changing the origin and unit distances such that it's the same as another</li>
-                        <li class="fragment">Same matrix can transform both a point and a system</li>
-                        <li class="fragment">Simple 1D example where transform is just a scalar</li>
+                        <li class="fragment" data-fragment-index="0">A system is defined by its origin and axes (unit distances) in all considered directions w.r.t another system</li>
+                        <li class="fragment" data-fragment-index="1">Transforming a system is just converting its frame (origin and axes) to superimpose another system's frame</li>
+                        <li class="fragment" data-fragment-index="2">A matrix can transform both a point and a system</li>
+                        <small class="fragment" data-fragment-index="4">$S_{6}$ moves the point within the ₹ system; it can also be used to transform ₹ system into $ system</small>
+                        <div class="fragment" data-fragment-index="3">
+                            <small>1D example where the transform is just a scalar, as the origins of both systems are coincident</small>
+                            <object type="image/svg+xml" data="images/1d_map.svg" style="padding: 5px"></object>
+                        </div>
                     </ul>
-                    <div>
-                        <object class="fragment" type="image/svg+xml" data="images/1d_map.svg" style="padding: 5px"></object>
-                    </div>
                 </section>
 
                 <section>
@@ -607,6 +611,20 @@
                         <object class="fragment" type="image/svg+xml" data="images/point_scale.svg" style="width: 48%; padding: 5px"></object>
                         <object class="fragment" type="image/svg+xml" data="images/sys_scale.svg" style="width: 48%; padding: 5px"></object>
                     </div>
+                </section>
+
+                <section>
+                    <h2>Concatenating System Transforms</h2>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Like point transforms, system transforms too can be contatenated; after all they are matrices</li>
+                        <li class="fragment" data-fragment-index="1">However, the order of multiplication would be reversed; successive transforms are pre-mutliplied</li>
+                        <li class="fragment" data-fragment-index="2">$L_{a \rightarrow c} = $ <span class="fragment" data-fragment-index="4">$L_{b \rightarrow c}$</span><span class="fragment" data-fragment-index="3">$L_{a \rightarrow b}$</span></li>
+                        <li class="fragment" data-fragment-index="5">System $S_1$ is transformed into system $S_n$ by transforming $S_1$ into $S_2$, then $S_2$ into $S_3$, and so on until $S_n$ is reached</li>
+                        <li class="fragment" data-fragment-index="6">
+                            <span>After transforming to a system, all further matrices are calculated with respect to that system</span><br />
+                            <small class="fragment" data-fragment-index="7">$L_{a \rightarrow b}$ is calcuated w.r.t system $A$, after concatenating it,  $L_{b \rightarrow c}$ is calculated with respect to system $B$</small>
+                        </li>
+                    </ul>
                 </section>
 
                 <section>
@@ -623,16 +641,18 @@
                     <ul>
                         <li class="fragment" data-fragment-index="0">A series of (concatenated) transforms may be seen
                             <ol>
-                                <li class="fragment" data-fragment-index="1">left to right — points transformed in one system</li>
-                                <li class="fragment" data-fragment-index="2">right to left — systems transformed</li>
+                                <li class="fragment" data-fragment-index="1">left to right — points transformed in one (global) system
+                                    <small>Every transform is calculated with respect to this one system</small>
+                                </li>
+                                <li class="fragment" data-fragment-index="2">right to left — systems transformed
+                                    <small>Every transform is calculated with respect to the most recent local system in effect</small>
+                                </li>
                             </ol>
                         </li>
-                        <li class="fragment" data-fragment-index="3">$P_a$ interpreted in system B would spatially represent $P_a'$</li>
-                        <li class="fragment" data-fragment-index="4">Point transforms are concatenated by post-multiplying<br />$P' = P$<span class="fragment" data-fragment-index="5">$X_1$</span><span class="fragment" data-fragment-index="6">$X_2$</span><span class="fragment" data-fragment-index="7">$X_3$</span></li>
-                        <li class="fragment" data-fragment-index="8">System transforms are concatenated by pre-multiplying<br />$L_{a \rightarrow b} = $<span class="fragment" data-fragment-index="11">$X_3$</span> <span class="fragment" data-fragment-index="10">$X_2$</span><span class="fragment" data-fragment-index="9"> $X_1$</span></li>
+                        <li class="fragment" data-fragment-index="4">Point transforms are concatenated by post-multiplying<br />$X = $<span class="fragment" data-fragment-index="5">$X_1$</span><span class="fragment" data-fragment-index="6">$X_2$</span><span class="fragment" data-fragment-index="7">$X_3$</span></li>
+                        <li class="fragment" data-fragment-index="8">System transforms are concatenated by pre-multiplying<br />$L_{a \rightarrow b} = $ <span class="fragment" data-fragment-index="11">$X_3$</span> <span class="fragment" data-fragment-index="10">$X_2$</span><span class="fragment" data-fragment-index="9"> $X_1$</span></li>
                         <li class="fragment" data-fragment-index="12">Since the order of multiplication is reversed result would be different (anti-commutativity)</li>
-                        <li class="fragment" data-fragment-index="13">Reason for the same result in previous exercise is we transformed in reverse order<br />
-                            <small class="fragment" data-fragment-index="14">Reverse order and pre-multiply → same order <span class="fragment" data-fragment-index="15">(¬¬x = x)</span></small></li>
+                        <small class="fragment" data-fragment-index="13">Reason for the same result in previous exercise: we transform in reverse order. Reverse order and pre-multiply ≡ original order and post-multiply i.e. ¬¬x = x</small>
                     </ul>
                     <aside class="notes">
                         Easy to get confused. Pause, ask if everyone if ok and show the image for clarification.
@@ -646,8 +666,8 @@
 
                 <section>
                     <h1>Part III</h1>
-                    <h2>Mapping</h2>
-                    <blockquote>Converting a value in one system to another</blockquote>
+                    <h2>Mapping between systems</h2>
+                    <blockquote class="fragment">Converting a value in one system to another</blockquote>
                     <p class="fragment">$M_{a \rightarrow b}: P_a \rightarrow P_b$</p>
                 </section>
 
@@ -655,27 +675,27 @@
                     <h2>Mapping</h2>
                     <ul>
                         <li class="fragment">The most important feature of a transform</li>
-                        <li class="fragment">Sole reason for the merit of having multiple systems<br />
-                            <small class="fragment">Work in a comfortable system and map result to some other</small>
-                        </li>
+                        <small class="fragment">The benefit of having multiple systems is reaped when using matrices for mapping</small>
+                        <li class="fragment">Once a map is applied to a canvas/context, all values are implicitly converted from source to target space</li>
+                        <small class="fragment">Work entirely in a comfortable system after setting the right mapping</small>
                         <li class="fragment">
-                            Multiple systems, and there by mapping between them, is more common in engineering
+                            Multiple systems and mapping between them is common
                             <small>
                                 <ul>
                                     <li class="fragment">Different countries, different currency and measurement systems</li>
-                                    <li class="fragment">Most words of a language (system) has a mapping (translation) to words of another language</li>
+                                    <li class="fragment">Most words of a language (system) has translations (mappings) to words of other languages</li>
                                     <li class="fragment">Every window on screen has its own viewport transform mapping to the screen canvas</li>
                                     <li class="fragment">Each group has a mapping to its parent group: SVG, PDF, …</li>
                                 </ul>
                             </small>
                         </li>
-                        <li class="fragment"><i>(physics)</i> Mapping passive; transforming active
-                            <small>
-                                <span class="fragment">Active because old value becomes a new value — actually different values</span><br />
-                                <span class="fragment">Passive since same value is just converted to a new unit</span>
-                            </small>
-                        </li>
-                        <li class="fragment">Active transforms are relatively less frequent, mostly used in animation</li>
+                        <li class="fragment"><i>(physics)</i> Transforming points — active. Mapping — passive.</li>
+                        <small>
+                            <span class="fragment"><i>Active</i> because old value becomes a new value — one system, two different values</span><br />
+                            <span class="fragment"><i>Passive</i> since same value is just converted to a new unit — one value, two different systems</span>
+                        </small>
+                        <li class="fragment">Active transforms are relatively less frequent</li>
+                        <small class="fragment">They are mostly used in animation</small>
                     </ul>
                     <aside class="notes">
                         Difference between active and passive:<br />
@@ -685,24 +705,50 @@
                 </section>
 
                 <section>
-                    <h2>Map A to B</h2>
+                    <h2>Find Red to Black Mapping</h2>
                     <div>
                         <object class="fragment" type="image/svg+xml" data="images/map_a2b.svg" style="float: right; width: 50%; padding: 5px"></object>
                         <div>
-                            <span class="fragment">$P_a M_{a \rightarrow b} = P_b$</span><br /><br />
-                            <span class="fragment">$M_{a \rightarrow b} = S_{2, 2} = L_{b \rightarrow a}$</span><br /><br />
-                            <span class="fragment">$\boxed{ M_{a \rightarrow b} = L_{b \rightarrow a} }$</span>
+                            <span class="fragment">$P_r M_{r \rightarrow b} = P_b$</span><br /><br />
+                            <span class="fragment">$M_{r \rightarrow b} = S_{2, 2} = L_{b \rightarrow r}$</span><br /><br />
+                            <span class="fragment">$\boxed{ M_{r \rightarrow b} = L_{b \rightarrow r} }$</span>
                         </div>
                     </div>
                     <blockquote style="float: left; text-align: left; width: 45%" class="fragment">
-                        The same transform that maps points of system A to points in B also transforms system B into A
+                        The transform that maps points of system A to B also transforms system B's frame into A.
                     </blockquote>
+                </section>
+
+                <section>
+                    <h2>Concatenating Mappings</h2>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Similar to point and system transforms, mappings can be concatenated too</li>
+                        <li class="fragment" data-fragment-index="1">Like point transforms, successive transforms are post-multiplied</li>
+                        <li class="fragment" data-fragment-index="2">$M_{a \rightarrow c} = $ <span class="fragment" data-fragment-index="3">$M_{a \rightarrow b}$</span> <span class="fragment" data-fragment-index="4">$M_{b \rightarrow c}$</span></li>
+                        <li class="fragment" data-fragment-index="8">$L_{c \rightarrow a} = $ <span class="fragment" data-fragment-index="10">$L_{b \rightarrow a}$</span> <span class="fragment" data-fragment-index="9">$L_{c \rightarrow b}$</span> <span class="fragment" data-fragment-index="11">$ = M_{a \rightarrow c}$</span></li>
+                        <small class="fragment" data-fragment-index="5">∵ $M_{a \rightarrow b} = L_{b \rightarrow a}$</small>
+                        <li class="fragment" data-fragment-index="6">Intermediate maps $M_{a \rightarrow b}$ and $M_{b \rightarrow c}$ found by transforming frame B to A and frame C to B respectively</li>
+                        <li class="fragment" data-fragment-index="7">Finding all intermediate maps is just transforming frame C to frame A</li>
+                        <small class="fragment" data-fragment-index="12">To find the mapping from system A to C, finding the matrix which transforms system C to A will do.</small>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Mixing Active and Passive Transforms</h2>
+                    <ul>
+                        <li class="fragment">A single matrix performing both active and passive transforms maybe needed</li>
+                        <li class="fragment">Concatenation order: active (point transforms) first, passive (maps) next</li>
+                        <li class="fragment">$C = X_1 X_2 … M_1 M_2 …$</li>
+                        <li class="fragment">Active part works in local space without any maps</li>
+                        <li class="fragment">Passive part maps that to target space post that</li>
+                        <li class="fragment">Active part would get interpreted in target space if reversed</li>
+                    </ul>
                 </section>
 
                 <section>
                     <h2>Hierarchical Transforms</h2>
                     <ul>
-                        <li class="fragment" data-fragment-index="0">
+                        <li class="fragment">
                             Mapping with many systems in between is common
                             <small>
                                 <ul>
@@ -713,15 +759,13 @@
                                 </ul>
                             </small>
                         </li>
-                        <li class="fragment" data-fragment-index="1">Once a mapping is applied to a canvas the rest of the calculations operate on that space</li>
-                        <li class="fragment" data-fragment-index="2">Say the calculator is set to divide every value by 60
-                            <small>Now all values are implicitly in $; needn't worry about conversion, you operate in ₹ always</small></li>
-                        <li class="fragment" data-fragment-index="3">$\boxed{M_{a \rightarrow c} = M_{a \rightarrow b} M_{b \rightarrow c}}$
-                            <small style="vertical-align: baseline"><i class="fragment" data-fragment-index="4">(order, of course, matters)</i></small>
-                        </li>
-                        <li class="fragment" data-fragment-index="6">$L_{c \rightarrow a} = ~$<span class="fragment" data-fragment-index="8">$L_{b \rightarrow a}~$</span> <span class="fragment" data-fragment-index="7">$L_{c \rightarrow b}$</span></li>
-                        <small class="fragment" data-fragment-index="5">∵ $M_{a \rightarrow b} = L_{b \rightarrow a}$</small>
-                        <li class="fragment" data-fragment-index="9">To find the mapping from system A to C, finding the matrix which transforms system C to A will do.</li>
+                        <li class="fragment">Different entites exist at different levels: root, parent and leaf</li>
+                        <li class="fragment">Knowing entity's position in parent/root space requires mapping</li>
+                        <small class="fragment">All maps from entity to parent/root are to be concatenated</small>
+                        <li class="fragment">When visiting an entity, concatenate its map with parent's</li>
+                        <small class="fragment">This happens recursively until root is reached</small>
+                        <li class="fragment">Stack data structure is usually used to preserve parent's map</li>
+                        <small class="fragment">Without this the parent's map gets modified; each entity PUSHes before concatenation and POPs when done</small>
                     </ul>
                     <aside class="notes">
                         Robotics example of mapping from world to finger space.<br />

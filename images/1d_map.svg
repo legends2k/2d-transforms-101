@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="6in" height="3in" viewBox="0 0 16 8" style="background-color: Cornsilk">"
+     width="4in" height="1.33in" viewBox="0 0 12 4" style="background-color: Cornsilk">"
     <defs>
         <pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
             <path d="M 1 0 L 0 0 0 1" fill="none" stroke="blue" stroke-width="0.05"/>
@@ -34,10 +34,22 @@
             }
          ]]> </script>
         <rect width="100%" height="100%" fill="url(#grid)" />
-        <g transform="translate(3, 5) scale(1, -1)">
+        <g transform="translate(3, 2) scale(1, -1)">
             <line x1="-3" y1="0" x2="13" y2="0"
                   stroke="black"
                   stroke-width="0.1" />
+            <g visibility="hidden">
+                <set id="anim2" attributeName="visibility" to="visible" begin="indefinite" dur="0.1s" fill="freeze" onend="setNextAnim('anim3')" />
+                <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
+                <line x1="0" y1="0" x2="6" y2="0"
+                      marker-start="url(#org)"
+                      marker-end="url(#redArrow)"
+                      stroke="red"
+                      stroke-width="0.1" />
+                <text x="-1" y="1" transform="scale(1, -1)" style="fill: #ff0000" font-size="1.2">
+                    $
+                </text>
+            </g>
             <line x1="0" y1="0" x2="1" y2="0"
                   marker-start="url(#org)"
                   marker-end="url(#blueArrow)"
@@ -54,24 +66,9 @@
                 <set attributeName="visibility" to="visible" begin="anim1.begin" dur="0s" fill="freeze" />
                 <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
             </text>
-            <text x="-1" y="0" transform="scale(1, -1)" font-size="1.2">
+            <text x="-1" y="0" transform="scale(1, -1)" style="fill: #0000ff" font-size="1.2">
                 ₹
             </text>
-            <g visibility="hidden">
-                <set id="anim2" attributeName="visibility" to="visible" begin="indefinite" dur="0.1s" fill="freeze" onend="setNextAnim('anim3')" />
-                <set attributeName="visibility" to="hidden" begin="Reset.begin" dur="0s" fill="freeze" />
-                <line x1="-3" y1="2" x2="13" y2="2"
-                      stroke="black"
-                      stroke-width="0.1" />
-                <line x1="0" y1="2" x2="6" y2="2"
-                      marker-start="url(#org)"
-                      marker-end="url(#redArrow)"
-                      stroke="red"
-                      stroke-width="0.1" />
-                <text x="-1" y="-2" transform="scale(1, -1)" font-size="1.2">
-                    $
-                </text>
-            </g>
         </g>
     </g>
 </svg>
