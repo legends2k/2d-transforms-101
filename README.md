@@ -1,6 +1,7 @@
 # TODO
 
-* Background becomes black upon switching to full screen; this is due to reveal.js, [issue #1624](https://github.com/hakimel/reveal.js/issues/1624).  This is fixed and the stable releases from 3.4.0 onwards should've it.
+* Background becomes black upon switching to full screen; this is due to reveal.js, [issue #1624](https://github.com/hakimel/reveal.js/issues/1624).  Move to 3.4+ for the fix.
+* MathJax CDN was shutdown in April 2017.  Move to reveal.js 3.5.0 to get this fixed.
 * Add an example in _Concatenating Mappings_; workout a compound transform say from PDF to D2D where both active and passive parts are involved.
 
 # reveal.js [![Build Status](https://travis-ci.org/hakimel/reveal.js.svg?branch=master)](https://travis-ci.org/hakimel/reveal.js)
